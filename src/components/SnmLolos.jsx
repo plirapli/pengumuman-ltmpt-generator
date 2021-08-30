@@ -17,7 +17,7 @@ function SnmLolos() {
 
   return (
     <div>
-      <div className="max-w-screen-sm mt-0 sm:mt-16">
+      <div className="mt-0 sm:mt-16">
         <div className="mb-4">
           <div className="flex mb-4">
             <div className="w-14 sm:w-20 h-14 sm:h-20 mr-1">
