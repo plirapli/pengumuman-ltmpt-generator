@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "./Logo";
 
 function Home() {
+  const [isLolos, setIsLolos] = useState(true);
+
+  const handleSetlolos = (param) => setIsLolos(() => param);
+
   return (
     <div>
       <Logo />
@@ -52,6 +56,81 @@ function Home() {
         </div>
         <div className="flex flex-col mb-8">
           <label className="mb-2 font-bold text-black text-opacity-30">
+            Jenis Seleksi
+          </label>
+          <div className="flex text-center">
+            <div
+              onClick={() => handleSetlolos(true)}
+              className={`
+                w-full rounded-md shadow
+                p-3 sm:p-4 mr-4
+                font-bold text-black text-opacity-60 
+                ${isLolos ? "bg-green-300" : "bg-white"} 
+                cursor-pointer
+              `}
+            >
+              SNMPTN
+            </div>
+            <div
+              onClick={() => handleSetlolos(false)}
+              className={`
+                p-3 sm:p-4 mr-4
+                w-full rounded-md shadow
+                font-bold text-black text-opacity-60 
+                ${!isLolos ? "bg-red-300" : "bg-white"} 
+                cursor-pointer
+              `}
+            >
+              SBMPTN
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col mb-8">
+          <label className="mb-2 font-bold text-black text-opacity-30">
+            Hasil
+          </label>
+          <div className="flex text-center">
+            <div
+              onClick={() => handleSetlolos(true)}
+              className={`
+                w-full rounded-md shadow
+                p-3 sm:p-4 mr-4
+                font-bold text-black text-opacity-60 
+                ${isLolos ? "bg-green-300" : "bg-white"} 
+                cursor-pointer
+              `}
+            >
+              Lolos
+            </div>
+            <div
+              onClick={() => handleSetlolos(false)}
+              className={`
+                p-3 sm:p-4 mr-4
+                w-full rounded-md shadow
+                font-bold text-black text-opacity-60 
+                ${!isLolos ? "bg-red-300" : "bg-white"} 
+                cursor-pointer
+              `}
+            >
+              Gagal
+            </div>
+          </div>
+        </div>
+        {isLolos && (
+          <div className="flex flex-col mb-8">
+            <label className="mb-2 font-bold text-black text-opacity-30">
+              Universitas
+            </label>
+            <input
+              className="p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base"
+              type="text"
+              placeholder="Universitas Tujuan"
+              required
+            />
+          </div>
+        )}
+        <div className="flex flex-col mb-8">
+          <label className="mb-2 font-bold text-black text-opacity-30">
             Asal Sekolah
           </label>
           <input
@@ -68,13 +147,13 @@ function Home() {
           <div className="flex text-sm sm:text-base">
             <input
               className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none"
-              type="number"
+              type="text"
               placeholder="Provinsi"
               required
             />
             <input
-              className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none"
-              type="number"
+              className="w-full p-3 sm:p-4 rounded-md shadow focus:outline-none"
+              type="text"
               placeholder="Kab/Kota"
               required
             />
