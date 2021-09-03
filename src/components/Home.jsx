@@ -5,7 +5,7 @@ function Home() {
   // Data Camaba
   const [noReg, setNoReg] = useState("");
   const [nama, setNama] = useState("");
-  const [lahir, setLahir] = useState({ d: "", m: 2, y: 2002 });
+  const [lahir, setLahir] = useState({ d: "", m: "", y: "" });
 
   const [snm, setSnm] = useState(true);
   const [sekolah, setSekolah] = useState("");
@@ -88,12 +88,18 @@ function Home() {
               required
             />
             <input
+              onChange={(e) => inputDataObjHandler(e, setLahir)}
+              name="m"
+              value={lahir.m}
               className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none"
               type="number"
               placeholder="Bulan"
               required
             />
             <input
+              onChange={(e) => inputDataObjHandler(e, setLahir)}
+              name="y"
+              value={lahir.y}
               className="w-full p-3 sm:p-4 rounded-md shadow focus:outline-none"
               type="number"
               placeholder="Tahun"
