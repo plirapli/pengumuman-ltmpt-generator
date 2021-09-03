@@ -14,7 +14,7 @@ function Home({ dataMaba, setDataMaba }) {
   const [sekolah, setSekolah] = useState("");
   const [domisili, setDomisili] = useState({ kotaKab: "", prov: "" });
 
-  const [isLolos, setIsLolos] = useState(true);
+  const [isLulus, setIsLulus] = useState(true);
   const [univ, setUniv] = useState("");
   const [prodi, setProdi] = useState("");
 
@@ -46,7 +46,7 @@ function Home({ dataMaba, setDataMaba }) {
       sekolah,
       kotaKab: domisili.kotaKab,
       prov: domisili.prov,
-      isLolos,
+      isLulus,
       univ,
       prodi,
     }));
@@ -223,25 +223,25 @@ function Home({ dataMaba, setDataMaba }) {
           </label>
           <div className="flex text-center">
             <div
-              onClick={() => handleSetParam(true, setIsLolos)}
+              onClick={() => handleSetParam(true, setIsLulus)}
               className={`
                 w-full rounded-md shadow
                 p-3 sm:p-4 mr-4
                 font-bold text-black text-opacity-60 
-                ${isLolos ? "bg-green-300" : "bg-white hover:bg-green-100"} 
+                ${isLulus ? "bg-green-300" : "bg-white hover:bg-green-100"} 
                 cursor-pointer
                 duration-200
               `}
             >
-              Lolos
+              Lulus
             </div>
             <div
-              onClick={() => handleSetParam(false, setIsLolos)}
+              onClick={() => handleSetParam(false, setIsLulus)}
               className={`
                 p-3 sm:p-4
                 w-full rounded-md shadow
                 font-bold text-black text-opacity-60 
-                ${!isLolos ? "bg-red-300" : "bg-white hover:bg-red-100"} 
+                ${!isLulus ? "bg-red-300" : "bg-white hover:bg-red-100"} 
                 cursor-pointer
                 duration-200
               `}
@@ -250,7 +250,7 @@ function Home({ dataMaba, setDataMaba }) {
             </div>
           </div>
         </div>
-        {isLolos && (
+        {isLulus && (
           <>
             <div className="flex flex-col mb-8">
               <label className="mb-2 font-bold text-black text-opacity-30">

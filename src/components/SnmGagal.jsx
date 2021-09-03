@@ -24,10 +24,10 @@ function SnmGagal({ dataMaba }) {
           {!dataMaba.isLulus && <p className="mt-2">{kalimatGagal}</p>}
         </div>
 
-        <div className="bg-white rounded-xl shadow p-4 mb-4 flex flex-col sm:flex-row">
+        <div className="bg-white rounded-xl shadow p-4 mb-4 flex flex-col sm:flex-row sm:items-center">
           {dataMaba.isLulus && <QrCode />}
           <div>
-            <p className="text-sm flex flex-col sm:flex-row mb-2">
+            <p className="text-sm flex flex-col sm:flex-row mb-1">
               <p className="mb-2 sm:mb-0">
                 <span className="font-bold text-black text-opacity-30">
                   NISN
@@ -45,11 +45,11 @@ function SnmGagal({ dataMaba }) {
             <h1 className="text-3xl font-bold uppercase">
               {dataMaba.nama || "John Doe"}
             </h1>
-            {!dataMaba.isLulus && (
-              <div className="mt-2 flex flex-col sm:flex-row sm:text-lg uppercase">
-                <h3>teknik informatika</h3>
+            {dataMaba.isLulus && (
+              <div className="mt-1 flex flex-col sm:flex-row sm:text-lg uppercase">
+                <h3>{dataMaba.prodi || "informatika"}</h3>
                 <span className="hidden sm:inline">&nbsp; | &nbsp;</span>
-                <h3>upn"veteran" Yogyakarta</h3>
+                <h3>{dataMaba.univ || "Institut Neo Kultur"}</h3>
               </div>
             )}
           </div>
