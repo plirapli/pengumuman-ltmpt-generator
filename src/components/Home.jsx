@@ -1,35 +1,57 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useHistory } from "react-router";
 import Logo from "./Logo";
 
-function Home() {
+function Home({ dataMaba, setDataMaba }) {
+  let history = useHistory();
   // Data Camaba
   const [noReg, setNoReg] = useState("");
   const [nama, setNama] = useState("");
   const [lahir, setLahir] = useState({ d: "", m: "", y: "" });
 
   const [snm, setSnm] = useState(true);
+  const [nisn, setNisn] = useState("");
   const [sekolah, setSekolah] = useState("");
-  const [domisili, setDomisili] = useState({});
+  const [domisili, setDomisili] = useState({ kotaKab: "", prov: "" });
 
   const [isLolos, setIsLolos] = useState(true);
   const [univ, setUniv] = useState("");
   const [prodi, setProdi] = useState("");
 
-  // Seluruh data camaba
-  const [data, setData] = useState({});
-
+  // input handler
   const handleSetParam = (param, setParam) => setParam(() => param);
-
-  const inputDataHandler = (e, setInput) => setInput(() => e.target.value);
+  const inputDataHandler = (e, setInput) => {
+    const { value, type } = e.target;
+    const val = type === "number" ? parseInt(value) : value;
+    setInput(() => val);
+  };
   const inputDataObjHandler = (e, setInput) => {
     const { name, value, type } = e.target;
-    const val = type === "number" && parseInt(value);
+    const val = type === "number" ? parseInt(value) : value;
     setInput((prev) => ({ ...prev, [name]: val }));
   };
 
+  // submit handler
   const submitDataHandler = (e) => {
     e.preventDefault();
-    return console.log("tes");
+    const tgLahir = `${lahir.d}/${lahir.m}/${lahir.y}`;
+
+    setDataMaba((prev) => ({
+      ...prev,
+      noReg,
+      nama,
+      tgLahir,
+      snm,
+      nisn,
+      sekolah,
+      kotaKab: domisili.kotaKab,
+      prov: domisili.prov,
+      isLolos,
+      univ,
+      prodi,
+    }));
+
+    snm ? history.push("/gagal") : history.push("/lolos");
   };
 
   return (
@@ -40,7 +62,7 @@ function Home() {
           HASIL SELEKSI SNMPTN 2021
         </h1>
         <p className="text-black text-opacity-30">
-          Silakan isi formulir di bawah.
+          Silakan isi formulir di bawah ini.
         </p>
       </div>
 
@@ -54,8 +76,8 @@ function Home() {
             onChange={(e) => inputDataHandler(e, setNoReg)}
             value={noReg}
             className="p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base"
-            type="text"
-            placeholder="Nomor Peserta"
+            type="number"
+            placeholder="No. Peserta"
             required
           />
         </div>
@@ -120,6 +142,7 @@ function Home() {
                 font-bold text-black text-opacity-60 
                 ${snm ? "bg-gray-300" : "bg-white hover:bg-gray-200"} 
                 cursor-pointer
+                duration-200
               `}
             >
               SNMPTN
@@ -143,9 +166,24 @@ function Home() {
           <>
             <div className="flex flex-col mb-8">
               <label className="mb-2 font-bold text-black text-opacity-30">
+                NISN
+              </label>
+              <input
+                onChange={(e) => inputDataHandler(e, setNisn)}
+                value={nisn}
+                className="p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base"
+                type="number"
+                placeholder="NISN"
+                required
+              />
+            </div>
+            <div className="flex flex-col mb-8">
+              <label className="mb-2 font-bold text-black text-opacity-30">
                 Asal Sekolah
               </label>
               <input
+                onChange={(e) => inputDataHandler(e, setSekolah)}
+                value={sekolah}
                 className="p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base"
                 type="text"
                 placeholder="Asal Sekolah"
@@ -158,15 +196,21 @@ function Home() {
               </label>
               <div className="flex text-sm sm:text-base">
                 <input
+                  onChange={(e) => inputDataObjHandler(e, setDomisili)}
+                  name="kotaKab"
+                  value={domisili.kotaKab}
                   className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none"
                   type="text"
-                  placeholder="Provinsi"
+                  placeholder="Kab/Kota"
                   required
                 />
                 <input
+                  onChange={(e) => inputDataObjHandler(e, setDomisili)}
+                  name="prov"
+                  value={domisili.prov}
                   className="w-full p-3 sm:p-4 rounded-md shadow focus:outline-none"
                   type="text"
-                  placeholder="Kab/Kota"
+                  placeholder="Provinsi"
                   required
                 />
               </div>
@@ -194,7 +238,7 @@ function Home() {
             <div
               onClick={() => handleSetParam(false, setIsLolos)}
               className={`
-                p-3 sm:p-4 mr-4
+                p-3 sm:p-4
                 w-full rounded-md shadow
                 font-bold text-black text-opacity-60 
                 ${!isLolos ? "bg-red-300" : "bg-white hover:bg-red-100"} 
@@ -213,6 +257,8 @@ function Home() {
                 Universitas
               </label>
               <input
+                onChange={(e) => inputDataHandler(e, setUniv)}
+                value={univ}
                 className="p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base"
                 type="text"
                 placeholder="Universitas Tujuan"
@@ -224,6 +270,8 @@ function Home() {
                 Program Studi
               </label>
               <input
+                onChange={(e) => inputDataHandler(e, setProdi)}
+                value={prodi}
                 className="p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base"
                 type="text"
                 placeholder="Program Studi"

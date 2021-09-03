@@ -1,10 +1,13 @@
-import React from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import SnmGagal from "./components/SnmGagal";
 import SnmLolos from "./components/SnmLolos";
 
 function App() {
+  // Seluruh data camaba
+  const [dataMaba, setDataMaba] = useState({});
+
   return (
     <div className="min-h-screen p-4 bg-base-500 flex justify-center font-poppins">
       <Router>
@@ -23,10 +26,10 @@ function App() {
 
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home dataMaba={dataMaba} setDataMaba={setDataMaba} />
             </Route>
             <Route path="/gagal">
-              <SnmGagal />
+              <SnmGagal dataMaba={dataMaba} />
             </Route>
             <Route path="/lolos">
               <SnmLolos />
