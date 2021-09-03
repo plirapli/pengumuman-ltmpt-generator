@@ -5,7 +5,7 @@ function Home() {
   // Data Camaba
   const [noReg, setNoReg] = useState("");
   const [nama, setNama] = useState("");
-  const [lahir, setLahir] = useState({});
+  const [lahir, setLahir] = useState({ d: "", m: 2, y: 2002 });
 
   const [snm, setSnm] = useState(true);
   const [sekolah, setSekolah] = useState("");
@@ -20,8 +20,11 @@ function Home() {
 
   const handleSetParam = (param, setParam) => setParam(() => param);
 
-  const inputDataHandler = (e, setInput) => {
-    setInput(() => e.target.value);
+  const inputDataHandler = (e, setInput) => setInput(() => e.target.value);
+  const inputDataObjHandler = (e, setInput) => {
+    const { name, value, type } = e.target;
+    const val = type === "number" && parseInt(value);
+    setInput((prev) => ({ ...prev, [name]: val }));
   };
 
   const submitDataHandler = (e) => {
@@ -61,18 +64,24 @@ function Home() {
             Nama Peserta
           </label>
           <input
+            onChange={(e) => inputDataHandler(e, setNama)}
+            value={nama}
             className="p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base"
             type="text"
             placeholder="Nama Peserta"
             required
           />
         </div>
+
         <div className="flex flex-col mb-8">
           <label className="mb-2 font-bold text-black text-opacity-30">
             Tanggal Lahir
           </label>
           <div className="flex text-sm sm:text-base">
             <input
+              onChange={(e) => inputDataObjHandler(e, setLahir)}
+              name="d"
+              value={lahir.d}
               className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none"
               type="number"
               placeholder="Tanggal"
@@ -103,7 +112,7 @@ function Home() {
                 w-full rounded-md shadow
                 p-3 sm:p-4 mr-4
                 font-bold text-black text-opacity-60 
-                ${snm ? "bg-gray-300" : "bg-white"} 
+                ${snm ? "bg-gray-300" : "bg-white hover:bg-gray-200"} 
                 cursor-pointer
               `}
             >
@@ -112,11 +121,12 @@ function Home() {
             <div
               onClick={() => handleSetParam(false, setSnm)}
               className={`
-                p-3 sm:p-4 mr-4
+                p-3 sm:p-4
                 w-full rounded-md shadow
                 font-bold text-black text-opacity-60 
-                ${!snm ? "bg-gray-300" : "bg-white"} 
+                ${!snm ? "bg-gray-300" : "bg-white hover:bg-gray-200"} 
                 cursor-pointer
+                duration-200
               `}
             >
               SBMPTN
