@@ -51,14 +51,14 @@ function Home({ dataMaba, setDataMaba }) {
       prodi,
     }));
 
-    snm ? history.push("/gagal") : history.push("/lolos");
+    snm ? history.push("/snm") : history.push("/sbm");
   };
 
   return (
     <div>
       <Logo />
       <div className="mb-4">
-        <h1 className="text-3xl font-bold uppercase">
+        <h1 className="mt-4 text-3xl font-bold uppercase">
           HASIL SELEKSI SNMPTN 2021
         </h1>
         <p className="text-black text-opacity-30">
@@ -104,7 +104,7 @@ function Home({ dataMaba, setDataMaba }) {
               onChange={(e) => inputDataObjHandler(e, setLahir)}
               name="d"
               value={lahir.d}
-              className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none"
+              className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none text-center"
               type="number"
               placeholder="Tanggal"
               required
@@ -113,7 +113,7 @@ function Home({ dataMaba, setDataMaba }) {
               onChange={(e) => inputDataObjHandler(e, setLahir)}
               name="m"
               value={lahir.m}
-              className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none"
+              className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none text-center"
               type="number"
               placeholder="Bulan"
               required
@@ -122,7 +122,7 @@ function Home({ dataMaba, setDataMaba }) {
               onChange={(e) => inputDataObjHandler(e, setLahir)}
               name="y"
               value={lahir.y}
-              className="w-full p-3 sm:p-4 rounded-md shadow focus:outline-none"
+              className="w-full p-3 sm:p-4 rounded-md shadow focus:outline-none text-center"
               type="number"
               placeholder="Tahun"
               required

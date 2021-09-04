@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
-import SnmGagal from "./components/SnmGagal";
-import SnmLolos from "./components/SnmLolos";
+import Snm from "./components/Snm";
 
 function App() {
   // Seluruh data camaba
@@ -17,23 +16,23 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li className="mr-4">
-              <Link to="/gagal">Gagal</Link>
+              <Link to="/snm">SNMPTN</Link>
             </li>
-            <li>
-              <Link to="/lolos">Lolos</Link>
-            </li>
+            {/* <li>
+              <Link to="/sbm">SBMPTN</Link>
+            </li> */}
           </ul>
 
           <Switch>
             <Route exact path="/">
               <Home dataMaba={dataMaba} setDataMaba={setDataMaba} />
             </Route>
-            <Route path="/gagal">
-              <SnmGagal dataMaba={dataMaba} />
+            <Route path="/snm">
+              <Snm dataMaba={dataMaba} />
             </Route>
-            <Route path="/lolos">
+            {/* <Route path="/sbm">
               <SnmLolos />
-            </Route>
+            </Route> */}
           </Switch>
         </div>
       </Router>
