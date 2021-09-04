@@ -40,7 +40,7 @@ function Snm({ dataMaba }) {
         <div className="mb-4">
           <div className="flex items-center">
             <Logo logo={logoSnm} />
-            <Logo customClass="ml-4" logo={logoLtmpt} />
+            <Logo customClass="ml-2 sm:ml-4" logo={logoLtmpt} />
           </div>
           <div className="mt-4 text-3xl">Pengumuman SNMPTN 2022</div>
         </div>
@@ -119,7 +119,7 @@ function Snm({ dataMaba }) {
             Silakan lakukan pendaftaran ulang.
           </h1>
           <p className="uppercase">{kalimatDaful}</p>
-          <div className="mt-2">
+          <div className="mt-2 break-words">
             <a
               target="_blank"
               rel="noreferrer"
