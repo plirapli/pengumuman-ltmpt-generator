@@ -36,7 +36,7 @@ function Snm({ dataMaba }) {
 
   return (
     <div>
-      <div className="mt-0 sm:mt-16">
+      <div className="mt-0 sm:mt-8">
         <div className="mb-4">
           <div className="flex items-center">
             <Logo logo={logoSnm} />

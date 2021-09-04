@@ -57,6 +57,7 @@ function Home({ dataMaba, setDataMaba }) {
 
     const tgLahir = `${lahir.d}/${lahir.m}/${lahir.y}`;
     const noPeserta = !snm ? threeDigitsSeparator(noReg) : noReg;
+    const valSekolah = sekolah.toUpperCase();
 
     setDataMaba((prev) => ({
       ...prev,
@@ -65,7 +66,7 @@ function Home({ dataMaba, setDataMaba }) {
       tgLahir,
       snm,
       nisn,
-      sekolah,
+      sekolah: valSekolah,
       kotaKab: domisili.kotaKab,
       prov: domisili.prov,
       isLulus,

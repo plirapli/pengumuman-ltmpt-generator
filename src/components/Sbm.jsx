@@ -12,7 +12,7 @@ function Snm({ dataMaba }) {
 
   return (
     <div>
-      <div className="mt-0 sm:mt-16">
+      <div className="mt-0 sm:mt-8">
         <div className="mb-4">
           <Logo logo={logoLtmpt} />
           <div className="mt-4 text-3xl">Pengumuman SBMPTN 2022</div>
