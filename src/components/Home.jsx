@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 import Logo from "./Logo";
+import logoLtmpt from "../assets/images/logo-ltmpt.png";
 
 function Home({ dataMaba, setDataMaba }) {
   let history = useHistory();
@@ -18,6 +19,25 @@ function Home({ dataMaba, setDataMaba }) {
   const [univ, setUniv] = useState("");
   const [prodi, setProdi] = useState("");
 
+  // nomor peserta separator
+  const threeDigitsSeparator = (num) => {
+    const arr = num
+      .toString()
+      .split("")
+      .reverse()
+      .map((n, i) => (i % 3 === 0 ? n + "-" : n))
+      .reverse();
+
+    return (
+      // Remove the last separator
+      arr
+        .map((n, i) =>
+          i + 1 === arr.length ? n.split("").slice(0, 1).join("") : n
+        )
+        .join("")
+    );
+  };
+
   // input handler
   const handleSetParam = (param, setParam) => setParam(() => param);
   const inputDataHandler = (e, setInput) => {
@@ -34,11 +54,13 @@ function Home({ dataMaba, setDataMaba }) {
   // submit handler
   const submitDataHandler = (e) => {
     e.preventDefault();
+
     const tgLahir = `${lahir.d}/${lahir.m}/${lahir.y}`;
+    const noPeserta = !snm ? threeDigitsSeparator(noReg) : noReg;
 
     setDataMaba((prev) => ({
       ...prev,
-      noReg,
+      noReg: noPeserta,
       nama,
       tgLahir,
       snm,
@@ -56,7 +78,7 @@ function Home({ dataMaba, setDataMaba }) {
 
   return (
     <div>
-      <Logo />
+      <Logo logo={logoLtmpt} />
       <div className="mb-4">
         <h1 className="mt-4 text-3xl font-bold uppercase">
           HASIL SELEKSI SNMPTN 2021
