@@ -1,14 +1,14 @@
-import Logo from "./Logo";
-import logoLtmpt from "../assets/images/logo-ltmpt.png";
-import logoSponsor from "../assets/images/sponsor.png";
-import QrCode from "./QrCode";
+import Logo from './Logo';
+import logoLtmpt from '../assets/images/logo-ltmpt.png';
+import logoSponsor from '../assets/images/sponsor.png';
+import QrCode from './QrCode';
 
 function Snm({ dataMaba }) {
   const kalimatGagal =
-    "semangat dan jangan putus asa! masih ada kesempatan mengikuti seleksi mandiri ptn.";
+    'semangat dan jangan putus asa! masih ada kesempatan mengikuti seleksi mandiri ptn.';
 
   const kalimatDaful =
-    "Informasi pendaftaran ulang di PTN/Politeknik Negeri dapat dilihat pada link berikut.";
+    'Informasi pendaftaran ulang di PTN/Politeknik Negeri dapat dilihat pada link berikut.';
 
   return (
     <div>
@@ -19,11 +19,13 @@ function Snm({ dataMaba }) {
         </div>
         <div
           className={`${
-            dataMaba.isLulus ? "bg-green-200" : "bg-red-300"
+            dataMaba.isLulus ? 'bg-green-200' : 'bg-red-300'
           } rounded-xl shadow p-4 mb-4 text-black text-opacity-75 uppercase`}
         >
           <h1 className="font-bold text-xl">
-            anda dinyatakan tidak lulus seleksi sbmptn 2022
+            {`anda dinyatakan ${
+              dataMaba.isLulus ? 'Lulus' : 'Tidak lulus'
+            } seleksi snmptn 2022`}
           </h1>
           {!dataMaba.isLulus && <p className="mt-2">{kalimatGagal}</p>}
         </div>
@@ -32,7 +34,7 @@ function Snm({ dataMaba }) {
           {dataMaba.isLulus && <QrCode />}
           <div>
             <h1 className="text-3xl font-bold uppercase">
-              {dataMaba.nama || "John Doe"}
+              {dataMaba.nama || 'John Doe'}
             </h1>
 
             <div className={`mt-2 flex flex-col sm:flex-row gap-1 sm:gap-8`}>
@@ -40,27 +42,27 @@ function Snm({ dataMaba }) {
                 <p className="text-sm font-bold text-black text-opacity-30">
                   TANGGAL LAHIR :
                 </p>
-                <p className="">{dataMaba.tglLahir || "31/12/2012"}</p>
+                <p className="">{dataMaba.tglLahir || '31/12/2012'}</p>
               </div>
 
               <div className="flex-col">
                 <p className="text-sm font-bold text-black text-opacity-30">
                   NOMOR PESERTA :
                 </p>
-                <p>{dataMaba.noReg || "123-123-12-0123"}</p>
+                <p>{dataMaba.noReg || '123-123-12-0123'}</p>
               </div>
             </div>
 
             {dataMaba.isLulus && (
               <div className="mt-2 flex flex-col sm:text-lg uppercase">
                 <h3 className="font-bold">
-                  {dataMaba.univ || "Institut Neo Kultur"}
+                  {dataMaba.univ || 'Institut Neo Kultur'}
                 </h3>
                 <h3>
-                  {" "}
-                  Program Studi{" "}
+                  {' '}
+                  Program Studi{' '}
                   <span className="font-bold">
-                    {dataMaba.prodi || "informatika"}
+                    {dataMaba.prodi || 'informatika'}
                   </span>
                 </h3>
               </div>

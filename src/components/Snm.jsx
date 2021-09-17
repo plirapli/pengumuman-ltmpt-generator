@@ -1,38 +1,38 @@
-import { Icon } from "@iconify/react";
-import Logo from "./Logo";
-import QrCode from "./QrCode";
-import logoLtmpt from "../assets/images/logo-ltmpt.png";
-import logoSnm from "../assets/images/logo-snmptn.png";
+import { Icon } from '@iconify/react';
+import Logo from './Logo';
+import QrCode from './QrCode';
+import logoLtmpt from '../assets/images/logo-ltmpt.png';
+import logoSnm from '../assets/images/logo-snmptn.png';
 
 function Snm({ dataMaba }) {
   const profiles = [
     {
-      title: "tanggal lahir",
-      icon: "ic:baseline-date-range",
-      val: dataMaba.tglLahir || "31/12/2012",
+      title: 'tanggal lahir',
+      icon: 'ic:baseline-date-range',
+      val: dataMaba.tglLahir || '31/12/2012',
     },
     {
-      title: "kabupaten/kota",
-      icon: "fluent:location-24-filled",
-      val: dataMaba.kotaKab || "Konoha",
+      title: 'kabupaten/kota',
+      icon: 'fluent:location-24-filled',
+      val: dataMaba.kotaKab || 'Konoha',
     },
     {
-      title: "asal sekolah",
-      icon: "ic:round-school",
-      val: dataMaba.sekolah || "SMA NEGERI 1 KWANGYA",
+      title: 'asal sekolah',
+      icon: 'ic:round-school',
+      val: dataMaba.sekolah || 'SMA NEGERI 1 KWANGYA',
     },
     {
-      title: "provinsi",
-      icon: "mdi:city-variant",
-      val: dataMaba.prov || "Earth C-137",
+      title: 'provinsi',
+      icon: 'mdi:city-variant',
+      val: dataMaba.prov || 'Earth C-137',
     },
   ];
 
   const kalimatGagal =
-    "masih ada kesempatan mendaftar dan mengikuti utbk sbmptn 2021 atau seleksi mandiri ptn.";
+    'masih ada kesempatan mendaftar dan mengikuti utbk sbmptn 2021 atau seleksi mandiri ptn.';
 
   const kalimatDaful =
-    "Informasi pendaftaran ulang di PTN/Politeknik Negeri dapat dilihat pada link berikut.";
+    'Informasi pendaftaran ulang di PTN/Politeknik Negeri dapat dilihat pada link berikut.';
 
   return (
     <div>
@@ -46,11 +46,13 @@ function Snm({ dataMaba }) {
         </div>
         <div
           className={`${
-            dataMaba.isLulus ? "bg-green-200" : "bg-red-300"
+            dataMaba.isLulus ? 'bg-green-200' : 'bg-red-300'
           } rounded-xl shadow p-4 mb-4 text-black text-opacity-75 uppercase`}
         >
           <h1 className="font-bold text-xl">
-            anda dinyatakan tidak lulus seleksi snmptn 2022
+            {`anda dinyatakan ${
+              dataMaba.isLulus ? 'Lulus' : 'Tidak lulus'
+            } seleksi snmptn 2022`}
           </h1>
           {!dataMaba.isLulus && <p className="mt-2">{kalimatGagal}</p>}
         </div>
@@ -62,31 +64,31 @@ function Snm({ dataMaba }) {
               <p className="mb-2 sm:mb-0">
                 <span className="font-bold text-black text-opacity-30">
                   NISN
-                </span>{" "}
-                {dataMaba.nisn || "0012345678"}
+                </span>{' '}
+                {dataMaba.nisn || '0012345678'}
               </p>
               <span className="hidden sm:inline">&nbsp; | &nbsp;</span>
               <p>
                 <span className="font-bold text-black text-opacity-30">
                   NO. REG
-                </span>{" "}
-                {dataMaba.noReg || "1231231232"}
+                </span>{' '}
+                {dataMaba.noReg || '1231231232'}
               </p>
             </p>
             <h1 className="mt-1 text-3xl font-bold uppercase">
-              {dataMaba.nama || "John Doe"}
+              {dataMaba.nama || 'John Doe'}
             </h1>
 
             {dataMaba.isLulus && (
               <div className="mt-1 flex flex-col sm:text-lg uppercase">
                 <h3 className="font-bold">
-                  {dataMaba.univ || "Institut Neo Kultur"}
+                  {dataMaba.univ || 'Institut Neo Kultur'}
                 </h3>
                 <h3>
-                  {" "}
-                  Program Studi{" "}
+                  {' '}
+                  Program Studi{' '}
                   <span className="font-bold">
-                    {dataMaba.prodi || "informatika"}
+                    {dataMaba.prodi || 'informatika'}
                   </span>
                 </h3>
               </div>
