@@ -97,7 +97,7 @@ function Home({ dataMaba, setDataMaba }) {
   const submitDataHandler = (e) => {
     e.preventDefault();
 
-    const tgLahir = `${lahir.d}/${lahir.m}/${lahir.y}`;
+    const tglLahir = `${lahir.d}/${lahir.m}/${lahir.y}`;
     const noPeserta = !snm ? threeDigitsSeparator(noReg) : noReg;
     const valSekolah = sekolah.toUpperCase();
 
@@ -105,7 +105,7 @@ function Home({ dataMaba, setDataMaba }) {
       ...prev,
       noReg: noPeserta,
       nama,
-      tgLahir,
+      tglLahir,
       snm,
       nisn,
       sekolah: valSekolah,
@@ -134,7 +134,7 @@ function Home({ dataMaba, setDataMaba }) {
 
       {/* Form Register Camaba */}
       <form onSubmit={submitDataHandler} action="">
-        <div className="flex flex-col mb-8">
+        {/* <div className="flex flex-col mb-8">
           <label className="mb-2 font-bold text-black text-opacity-30">
             Nomor Peserta
           </label>
@@ -160,7 +160,7 @@ function Home({ dataMaba, setDataMaba }) {
             placeholder="Nama Peserta"
             required
           />
-        </div>
+        </div> */}
 
         <div className="flex flex-col mb-8">
           <label className="mb-2 font-bold text-black text-opacity-30">
@@ -199,7 +199,7 @@ function Home({ dataMaba, setDataMaba }) {
             />
           </div>
         </div>
-        <div className="flex flex-col mb-8">
+        {/* <div className="flex flex-col mb-8">
           <label className="mb-2 font-bold text-black text-opacity-30">
             Jenis Seleksi
           </label>
@@ -340,8 +340,8 @@ function Home({ dataMaba, setDataMaba }) {
               Gagal
             </div>
           </div>
-        </div>
-        {isLulus && (
+        </div> */}
+        {/* {isLulus && (
           <>
             <div className="flex flex-col mb-8">
               <label className="mb-2 font-bold text-black text-opacity-30">
@@ -370,7 +370,7 @@ function Home({ dataMaba, setDataMaba }) {
               />
             </div>
           </>
-        )}
+        )} */}
         <button
           type="submit"
           className="
