@@ -1,10 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import Logo from './Logo';
 import logoLtmpt from '../assets/images/logo-ltmpt.png';
 
 function Home({ dataMaba, setDataMaba }) {
   let history = useHistory();
+
+  // Data Domisili
+  const [provinsi, setProvinsi] = useState([]);
+  const [provId, setProvId] = useState('11');
+  const [kotaKab, setKotaKab] = useState([]);
+
   // Data Camaba
   const [noReg, setNoReg] = useState('');
   const [nama, setNama] = useState('');
@@ -13,11 +19,26 @@ function Home({ dataMaba, setDataMaba }) {
   const [snm, setSnm] = useState(true);
   const [nisn, setNisn] = useState('');
   const [sekolah, setSekolah] = useState('');
-  const [domisili, setDomisili] = useState({ kotaKab: '', prov: '' });
+  const [domisili, setDomisili] = useState({ kotaKab: '', prov: 'ACEH' });
 
   const [isLulus, setIsLulus] = useState(true);
   const [univ, setUniv] = useState('');
   const [prodi, setProdi] = useState('');
+
+  useEffect(() => {
+    snm &&
+      fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`)
+        .then((response) => response.json())
+        .then((provinces) => setProvinsi(() => provinces));
+  }, []);
+
+  useEffect(() => {
+    fetch(
+      `http://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provId}.json`
+    )
+      .then((response) => response.json())
+      .then((regencies) => setKotaKab(() => regencies));
+  }, [domisili.prov]);
 
   // nomor peserta separator
   const threeDigitsSeparator = (num) => {
@@ -55,9 +76,11 @@ function Home({ dataMaba, setDataMaba }) {
   };
 
   // Obj type
-  const inputDataObjHandler = (e, setInput, num) => {
-    const { name, value } = e.target;
+  const inputDataObjHandler = (e, setInput, num, select) => {
+    const { name, value, options, selectedIndex } = e.target;
     const val = num ? numType(value) : value;
+
+    select && setProvId(options[selectedIndex].dataset.prov);
 
     setInput((prev) => ({ ...prev, [name]: val }));
   };
@@ -164,7 +187,7 @@ function Home({ dataMaba, setDataMaba }) {
               className="w-full p-3 sm:p-4 rounded-md shadow focus:outline-none text-center"
               type="text"
               placeholder="Tahun"
-              maxLength="2"
+              maxLength="4"
               required
             />
           </div>
@@ -235,24 +258,44 @@ function Home({ dataMaba, setDataMaba }) {
                 Domisili
               </label>
               <div className="flex text-sm sm:text-base">
-                <input
-                  onChange={(e) => inputDataObjHandler(e, setDomisili)}
-                  name="kotaKab"
-                  value={domisili.kotaKab}
-                  className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none"
-                  type="text"
-                  placeholder="Kab/Kota"
-                  required
-                />
-                <input
-                  onChange={(e) => inputDataObjHandler(e, setDomisili)}
-                  name="prov"
-                  value={domisili.prov}
-                  className="w-full p-3 sm:p-4 rounded-md shadow focus:outline-none"
-                  type="text"
-                  placeholder="Provinsi"
-                  required
-                />
+                <div className="w-full flex items-center relative">
+                  <select
+                    name="prov"
+                    title="Daftar Provinsi"
+                    className="w-full p-3 pr-8 sm:p-4 sm:pr-10 mr-4 rounded-md shadow focus:outline-none appearance-none overflow-ellipsis"
+                    onChange={(e) => {
+                      inputDataObjHandler(e, setDomisili, false, true);
+                    }}
+                  >
+                    {provinsi.map((prov) => (
+                      <option
+                        data-prov={prov.id}
+                        key={prov.id}
+                        value={prov.name}
+                      >
+                        {prov.name}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute right-7">▼</div>
+                </div>
+
+                <div className="w-full flex items-center relative ">
+                  <select
+                    name="kotaKab"
+                    title="Daftar Kabupaten"
+                    id=""
+                    className="w-full p-3 pr-8 sm:p-4 sm:pr-12 rounded-md shadow focus:outline-none appearance-none overflow-ellipsis"
+                    onChange={(e) => inputDataObjHandler(e, setDomisili)}
+                  >
+                    {kotaKab.map((regency) => (
+                      <option key={regency.id} value={regency.name}>
+                        {regency.name}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute right-2">▼</div>
+                </div>
               </div>
             </div>
           </>
