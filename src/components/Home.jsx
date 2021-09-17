@@ -1,57 +1,69 @@
-import { useState } from "react";
-import { useHistory } from "react-router";
-import Logo from "./Logo";
-import logoLtmpt from "../assets/images/logo-ltmpt.png";
+import { useState } from 'react';
+import { useHistory } from 'react-router';
+import Logo from './Logo';
+import logoLtmpt from '../assets/images/logo-ltmpt.png';
 
 function Home({ dataMaba, setDataMaba }) {
   let history = useHistory();
   // Data Camaba
-  const [noReg, setNoReg] = useState("");
-  const [nama, setNama] = useState("");
-  const [lahir, setLahir] = useState({ d: "", m: "", y: "" });
+  const [noReg, setNoReg] = useState('');
+  const [nama, setNama] = useState('');
+  const [lahir, setLahir] = useState({ d: '', m: '', y: '' });
 
   const [snm, setSnm] = useState(true);
-  const [nisn, setNisn] = useState("");
-  const [sekolah, setSekolah] = useState("");
-  const [domisili, setDomisili] = useState({ kotaKab: "", prov: "" });
+  const [nisn, setNisn] = useState('');
+  const [sekolah, setSekolah] = useState('');
+  const [domisili, setDomisili] = useState({ kotaKab: '', prov: '' });
 
   const [isLulus, setIsLulus] = useState(true);
-  const [univ, setUniv] = useState("");
-  const [prodi, setProdi] = useState("");
+  const [univ, setUniv] = useState('');
+  const [prodi, setProdi] = useState('');
 
   // nomor peserta separator
   const threeDigitsSeparator = (num) => {
     const arr = num
       .toString()
-      .split("")
+      .split('')
       .reverse()
-      .map((n, i) => (i % 3 === 0 ? n + "-" : n))
+      .map((n, i) => (i % 3 === 0 ? n + '-' : n))
       .reverse();
 
     return (
       // Remove the last separator
       arr
         .map((n, i) =>
-          i + 1 === arr.length ? n.split("").slice(0, 1).join("") : n
+          i + 1 === arr.length ? n.split('').slice(0, 1).join('') : n
         )
-        .join("")
+        .join('')
     );
   };
 
-  // input handler
-  const handleSetParam = (param, setParam) => setParam(() => param);
-  const inputDataHandler = (e, setInput) => {
-    const { value, type } = e.target;
-    const val = type === "number" ? parseInt(value) : value;
-    setInput(() => val);
-  };
-  const inputDataObjHandler = (e, setInput) => {
-    const { name, value, type } = e.target;
-    const val = type === "number" ? parseInt(value) : value;
-    setInput((prev) => ({ ...prev, [name]: val }));
+  // == INPUT HANDLER
+  // Restrict to only input number
+  const numType = (val) => {
+    return val.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
   };
 
-  // submit handler
+  // Btn type
+  const handleSetParam = (param, setParam) => setParam(() => param);
+
+  // Str type
+  const inputDataHandler = (e, setInput, num) => {
+    const { value } = e.target;
+    const val = num ? numType(value) : value;
+    setInput(() => val);
+  };
+
+  // Obj type
+  const inputDataObjHandler = (e, setInput, num) => {
+    const { name, value } = e.target;
+    const val = num ? numType(value) : value;
+
+    setInput((prev) => ({ ...prev, [name]: val }));
+  };
+  // == INPUT HANDLER
+
+  // == SUBMIT HANDLER
   const submitDataHandler = (e) => {
     e.preventDefault();
 
@@ -74,8 +86,9 @@ function Home({ dataMaba, setDataMaba }) {
       prodi,
     }));
 
-    snm ? history.push("/snm") : history.push("/sbm");
+    snm ? history.push('/snm') : history.push('/sbm');
   };
+  // == SUBMIT HANDLER
 
   return (
     <div>
@@ -96,11 +109,12 @@ function Home({ dataMaba, setDataMaba }) {
             Nomor Peserta
           </label>
           <input
-            onChange={(e) => inputDataHandler(e, setNoReg)}
+            onChange={(e) => inputDataHandler(e, setNoReg, true)}
             value={noReg}
             className="p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base"
-            type="number"
+            type="name"
             placeholder="No. Peserta"
+            maxLength={snm ? '10' : '12'}
             required
           />
         </div>
@@ -124,30 +138,33 @@ function Home({ dataMaba, setDataMaba }) {
           </label>
           <div className="flex text-sm sm:text-base">
             <input
-              onChange={(e) => inputDataObjHandler(e, setLahir)}
+              onChange={(e) => inputDataObjHandler(e, setLahir, true)}
               name="d"
               value={lahir.d}
               className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none text-center"
-              type="number"
+              type="text"
               placeholder="Tanggal"
+              maxLength="2"
               required
             />
             <input
-              onChange={(e) => inputDataObjHandler(e, setLahir)}
+              onChange={(e) => inputDataObjHandler(e, setLahir, true)}
               name="m"
               value={lahir.m}
               className="w-full p-3 sm:p-4 mr-4 rounded-md shadow focus:outline-none text-center"
-              type="number"
+              type="text"
               placeholder="Bulan"
+              maxLength="2"
               required
             />
             <input
-              onChange={(e) => inputDataObjHandler(e, setLahir)}
+              onChange={(e) => inputDataObjHandler(e, setLahir, true)}
               name="y"
               value={lahir.y}
               className="w-full p-3 sm:p-4 rounded-md shadow focus:outline-none text-center"
-              type="number"
+              type="text"
               placeholder="Tahun"
+              maxLength="2"
               required
             />
           </div>
@@ -163,7 +180,7 @@ function Home({ dataMaba, setDataMaba }) {
                 w-full rounded-md shadow
                 p-3 sm:p-4 mr-4
                 font-bold text-black text-opacity-60 
-                ${snm ? "bg-gray-300" : "bg-white hover:bg-gray-200"} 
+                ${snm ? 'bg-gray-300' : 'bg-white hover:bg-gray-200'} 
                 cursor-pointer
                 duration-200
               `}
@@ -176,7 +193,7 @@ function Home({ dataMaba, setDataMaba }) {
                 p-3 sm:p-4
                 w-full rounded-md shadow
                 font-bold text-black text-opacity-60 
-                ${!snm ? "bg-gray-300" : "bg-white hover:bg-gray-200"} 
+                ${!snm ? 'bg-gray-300' : 'bg-white hover:bg-gray-200'} 
                 cursor-pointer
                 duration-200
               `}
@@ -251,7 +268,7 @@ function Home({ dataMaba, setDataMaba }) {
                 w-full rounded-md shadow
                 p-3 sm:p-4 mr-4
                 font-bold text-black text-opacity-60 
-                ${isLulus ? "bg-green-300" : "bg-white hover:bg-green-100"} 
+                ${isLulus ? 'bg-green-300' : 'bg-white hover:bg-green-100'} 
                 cursor-pointer
                 duration-200
               `}
@@ -264,7 +281,7 @@ function Home({ dataMaba, setDataMaba }) {
                 p-3 sm:p-4
                 w-full rounded-md shadow
                 font-bold text-black text-opacity-60 
-                ${!isLulus ? "bg-red-300" : "bg-white hover:bg-red-100"} 
+                ${!isLulus ? 'bg-red-300' : 'bg-white hover:bg-red-100'} 
                 cursor-pointer
                 duration-200
               `}
