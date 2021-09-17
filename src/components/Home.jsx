@@ -29,7 +29,7 @@ function Home({ dataMaba, setDataMaba }) {
   const [prodi, setProdi] = useState('');
 
   useEffect(() => {
-    fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`)
+    fetch(`https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`)
       .then((response) => response.json())
       .then((provinces) => setProvinsi(() => provinces));
   }, []);
@@ -41,7 +41,7 @@ function Home({ dataMaba, setDataMaba }) {
 
   useEffect(() => {
     fetch(
-      `http://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provId}.json`
+      `https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provId}.json`
     )
       .then((response) => response.json())
       .then((regencies) => setKotaKab(() => regencies));
