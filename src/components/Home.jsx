@@ -132,6 +132,10 @@ function Home({ dataMaba, setDataMaba }) {
         </p>
       </div>
 
+      <div className="bg-blue-200 my-4 p-3 sm:p-4 rounded-md shadow text-sm text-black text-opacity-30 uppercase">
+        Data yang telah anda isi tidak akan dikirimkan ke server mana pun.
+      </div>
+
       {/* Form Register Camaba */}
       <form onSubmit={submitDataHandler} action="">
         <div className="flex flex-col mb-8">
