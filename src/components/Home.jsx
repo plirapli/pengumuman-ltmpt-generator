@@ -19,7 +19,10 @@ function Home({ dataMaba, setDataMaba }) {
   const [snm, setSnm] = useState(true);
   const [nisn, setNisn] = useState('');
   const [sekolah, setSekolah] = useState('');
-  const [domisili, setDomisili] = useState({ kotaKab: '', prov: 'ACEH' });
+  const [domisili, setDomisili] = useState({
+    kotaKab: 'KABUPATEN SIMEULUE',
+    prov: 'ACEH',
+  });
 
   const [isLulus, setIsLulus] = useState(true);
   const [univ, setUniv] = useState('');
@@ -38,7 +41,7 @@ function Home({ dataMaba, setDataMaba }) {
     )
       .then((response) => response.json())
       .then((regencies) => setKotaKab(() => regencies));
-  }, [domisili.prov]);
+  }, [domisili.prov, provId]);
 
   // nomor peserta separator
   const threeDigitsSeparator = (num) => {
@@ -232,11 +235,12 @@ function Home({ dataMaba, setDataMaba }) {
                 NISN
               </label>
               <input
-                onChange={(e) => inputDataHandler(e, setNisn)}
+                onChange={(e) => inputDataHandler(e, setNisn, true)}
                 value={nisn}
                 className="p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base"
-                type="number"
+                type="text"
                 placeholder="NISN"
+                maxLength="10"
                 required
               />
             </div>
