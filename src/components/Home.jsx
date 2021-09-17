@@ -29,11 +29,15 @@ function Home({ dataMaba, setDataMaba }) {
   const [prodi, setProdi] = useState('');
 
   useEffect(() => {
-    snm &&
-      fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`)
-        .then((response) => response.json())
-        .then((provinces) => setProvinsi(() => provinces));
+    fetch(`http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`)
+      .then((response) => response.json())
+      .then((provinces) => setProvinsi(() => provinces));
   }, []);
+
+  useEffect(() => {
+    setDomisili((prev) => ({ ...prev, prov: 'ACEH' }));
+    setProvId('11');
+  }, [snm]);
 
   useEffect(() => {
     fetch(
@@ -41,7 +45,7 @@ function Home({ dataMaba, setDataMaba }) {
     )
       .then((response) => response.json())
       .then((regencies) => setKotaKab(() => regencies));
-  }, [domisili.prov, provId]);
+  }, [domisili.prov, provId, snm]);
 
   // nomor peserta separator
   const threeDigitsSeparator = (num) => {
