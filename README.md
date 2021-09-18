@@ -5,20 +5,20 @@ This app lets you generate SBMPTN or SNMPTN website announcement based on your d
 
 [**Website**](https://pengumuman-ltmpt-generator.vercel.app/)
 
-### Form Interface
+### Form UI
 
 ---
 
-![form interface](https://res.cloudinary.com/mrafliy/image/upload/v1630845188/personal%20website/works/images/ltmpt-web-generator/form.png)
+![Form UI](https://res.cloudinary.com/mrafliy/image/upload/v1631995737/personal%20website/works/images/ltmpt-web-generator/form.png)
 
-### SBMPTN Web Interface
-
----
-
-![sbmptn web ui](https://res.cloudinary.com/mrafliy/image/upload/v1630845186/personal%20website/works/images/ltmpt-web-generator/sbmptn_lolos.png)
-
-### SNMPTN Web Interface
+### SBMPTN Web UI
 
 ---
 
-![SNMPTN WEB UI](https://res.cloudinary.com/mrafliy/image/upload/v1630774049/personal%20website/works/thumbnails/ltmpt-web-generator.png)
+![SBMPTN UI](https://res.cloudinary.com/mrafliy/image/upload/v1631995737/personal%20website/works/images/ltmpt-web-generator/sbmptn_lolos.png)
+
+### SNMPTN Web UI
+
+---
+
+![SNMPTN UI](https://res.cloudinary.com/mrafliy/image/upload/v1631993987/personal%20website/works/images/ltmpt-web-generator/snmptn_lolos.png)
