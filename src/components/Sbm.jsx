@@ -2,6 +2,7 @@ import Logo from './Logo';
 import logoLtmpt from '../assets/images/logo-ltmpt.png';
 import logoSponsor from '../assets/images/sponsor.png';
 import QrCode from './QrCode';
+import { Link } from 'react-router-dom';
 
 function Snm({ dataMaba }) {
   const kalimatGagal =
@@ -14,7 +15,9 @@ function Snm({ dataMaba }) {
     <div>
       <div className="mt-0 sm:mt-8">
         <div className="mb-4">
-          <Logo logo={logoLtmpt} />
+          <Link to="/">
+            <Logo logo={logoLtmpt} />
+          </Link>
           <div className="mt-4 text-3xl">Pengumuman SBMPTN 2022</div>
         </div>
         <div
@@ -25,7 +28,7 @@ function Snm({ dataMaba }) {
           <h1 className="font-bold text-xl">
             {`anda dinyatakan ${
               dataMaba.isLulus ? 'Lulus' : 'Tidak lulus'
-            } seleksi snmptn 2022`}
+            } seleksi sbmptn 2022`}
           </h1>
           {!dataMaba.isLulus && <p className="mt-2">{kalimatGagal}</p>}
         </div>

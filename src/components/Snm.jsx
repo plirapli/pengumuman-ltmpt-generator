@@ -3,6 +3,7 @@ import Logo from './Logo';
 import QrCode from './QrCode';
 import logoLtmpt from '../assets/images/logo-ltmpt.png';
 import logoSnm from '../assets/images/logo-snmptn.png';
+import { Link } from 'react-router-dom';
 
 function Snm({ dataMaba }) {
   const profiles = [
@@ -38,10 +39,12 @@ function Snm({ dataMaba }) {
     <div>
       <div className="mt-0 sm:mt-8">
         <div className="mb-4">
-          <div className="flex items-center">
-            <Logo logo={logoSnm} />
-            <Logo customClass="ml-2 sm:ml-4" logo={logoLtmpt} />
-          </div>
+          <Link to="/">
+            <div className="flex items-center">
+              <Logo logo={logoSnm} />
+              <Logo customClass="ml-2 sm:ml-4" logo={logoLtmpt} />
+            </div>
+          </Link>
           <div className="mt-4 text-3xl">Pengumuman SNMPTN 2022</div>
         </div>
         <div

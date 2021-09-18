@@ -125,7 +125,7 @@ function Home({ dataMaba, setDataMaba }) {
       <Logo logo={logoLtmpt} />
       <div className="mb-4">
         <h1 className="mt-4 text-3xl font-bold uppercase">
-          HASIL SELEKSI SNMPTN 2021
+          {`hasil seleksi ${snm ? 'snmptn' : 'sbmptn'} 2022`}
         </h1>
         <p className="text-black text-opacity-30">
           Silakan isi formulir di bawah ini.
