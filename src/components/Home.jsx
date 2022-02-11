@@ -124,7 +124,7 @@ function Home({ setDataMaba }) {
   // == SUBMIT HANDLER
 
   return (
-    <div>
+    <div className='w-full max-w-screen-md'>
       <Logo logo={logoLtmpt} />
       <div className='mb-4'>
         <h1 className='mt-4 text-3xl font-bold uppercase'>

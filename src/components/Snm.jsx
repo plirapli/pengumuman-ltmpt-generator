@@ -36,7 +36,7 @@ function Snm({ dataMaba }) {
     'Informasi pendaftaran ulang di PTN/Politeknik Negeri dapat dilihat pada link berikut.';
 
   return (
-    <div>
+    <div className='w-full max-w-screen-md'>
       <div className='mt-0 sm:mt-8'>
         <div className='mb-4'>
           <Link to='/'>
