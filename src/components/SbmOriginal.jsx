@@ -13,82 +13,79 @@ function Snm({ dataMaba }) {
 
   return (
     <div className='w-full'>
-      <div className='mt-0 sm:mt-8'>
-        <div className='mb-4'>
+      <div className='mt-0 flex flex-col items-center'>
+        <div className='w-full'>
           <Link to='/'>
             <Logo logo={logoLtmpt} />
           </Link>
           <div className='mt-4'>
             <Logo customClass='' logo={logoSponsor} />
           </div>
-          <div className='mt-4 text-3xl'>Pengumuman SBMPTN 2022</div>
-        </div>
-        <div
-          className={`${
-            dataMaba.isLulus ? 'bg-green-200' : 'bg-red-300'
-          } rounded-xl shadow p-4 mb-4 text-black text-opacity-75 uppercase`}>
-          <h1 className='font-bold text-xl'>
-            {`anda dinyatakan ${
-              dataMaba.isLulus ? 'Lulus' : 'Tidak lulus'
-            } seleksi sbmptn 2022`}
-          </h1>
-          {!dataMaba.isLulus && <p className='mt-2'>{kalimatGagal}</p>}
         </div>
 
-        <div className='bg-white rounded-xl shadow p-4 mb-4 flex flex-col sm:flex-row sm:items-center'>
-          {dataMaba.isLulus && <QrCode />}
-          <div>
-            <h1 className='text-3xl font-bold uppercase'>
-              {dataMaba.nama || 'John Doe'}
-            </h1>
+        <div className='w-full h-8 bg-blue-500'></div>
 
-            <div className={`mt-2 flex flex-col sm:flex-row gap-1 sm:gap-8`}>
-              <div className='flex-col'>
-                <p className='text-sm font-bold text-black text-opacity-30'>
-                  TANGGAL LAHIR :
-                </p>
-                <p className=''>{dataMaba.tglLahir || '31/12/2012'}</p>
+        {/* Body */}
+        <div className='w-full max-w-screen-lg'>
+          <div className='my-8 text-xl font-bold text-center'>
+            PENGUMUMAN HASIL SELEKSI SBMPTN LTMPT 2021
+          </div>
+
+          {/* Hasil */}
+          <div className='border border-black rounded-md overflow-hidden'>
+            {/* Profil Siswa */}
+            <div className='p-6 grid grid-rows-2 sm:grid-cols-12 sm:grid-rows-none'>
+              <div className='border border-red-500 sm:col-span-4'>
+                {dataMaba.isLulus && <QrCode size='max-w-full h-auto' />}
               </div>
+              <div className='p-6 sm:ml-6 bg-gray-200 sm:col-span-8'>
+                <div className='flex flex-col'>
+                  <div className='flex'>
+                    <p className='w-32 border border-red-500'>Nomor peserta</p>
+                    <span className='mx-4 border border-red-500'>:</span>
+                    <p className='flex-grow border border-red-500 font-bold uppercase'>
+                      {dataMaba.noReg || '123-123-12-0123'}
+                    </p>
+                  </div>
+                  <div className='flex'>
+                    <p className='w-32 border border-red-500'>Nama</p>
+                    <span className='mx-4 border border-red-500'>:</span>
+                    <p className='flex-grow border border-red-500 font-bold uppercase'>
+                      {dataMaba.nama || 'John Doe'}
+                    </p>
+                  </div>
+                  <div className='flex'>
+                    <p className='w-32 border border-red-500'>Tanggal lahir</p>
+                    <span className='mx-4 border border-red-500'>:</span>
+                    <p className='flex-grow border border-red-500 font-bold uppercase'>
+                      {dataMaba.tglLahir || '31-12-2012'}
+                    </p>
+                  </div>
+                </div>
 
-              <div className='flex-col'>
-                <p className='text-sm font-bold text-black text-opacity-30'>
-                  NOMOR PESERTA :
-                </p>
-                <p>{dataMaba.noReg || '123-123-12-0123'}</p>
+                {dataMaba.isLulus && (
+                  <div className='mt-2 flex flex-col sm:text-lg uppercase'>
+                    <h3 className='font-bold'>
+                      {dataMaba.univ || 'Institut Neo Kultur'}
+                    </h3>
+                    <h3>
+                      {' '}
+                      Program Studi{' '}
+                      <span className='font-bold'>
+                        {dataMaba.prodi || 'informatika'}
+                      </span>
+                    </h3>
+                  </div>
+                )}
               </div>
             </div>
 
-            {dataMaba.isLulus && (
-              <div className='mt-2 flex flex-col sm:text-lg uppercase'>
-                <h3 className='font-bold'>
-                  {dataMaba.univ || 'Institut Neo Kultur'}
-                </h3>
-                <h3>
-                  {' '}
-                  Program Studi{' '}
-                  <span className='font-bold'>
-                    {dataMaba.prodi || 'informatika'}
-                  </span>
-                </h3>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Daftar Ulang */}
-        <div className='bg-white rounded-xl shadow p-4 mt-4 text-black text-opacity-75'>
-          <h1 className='font-bold uppercase'>
-            Silakan lakukan pendaftaran ulang.
-          </h1>
-          <p className='uppercase'>{kalimatDaful}</p>
-          <div className='mt-2 break-words'>
-            <a
-              target='_blank'
-              rel='noreferrer'
-              class='underline text-blue-500'
-              href='https://github.com/plirapli/pengumuman-ltmpt-generator'>
-              https://pmb.universitaswakanda.ac.id
-            </a>
+            {/* Tombol kembali */}
+            <div className='bg-gray-200 p-4 mt-8'>
+              <button className='w-full p-2 rounded bg-green-500 text-white'>
+                Kembali ke pencarian
+              </button>
+            </div>
           </div>
         </div>
       </div>
