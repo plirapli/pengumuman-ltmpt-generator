@@ -33,7 +33,7 @@ function Snm({ dataMaba }) {
         </div>
 
         <div className='bg-white rounded-xl shadow p-4 mb-4 flex flex-col sm:flex-row sm:items-center'>
-          {dataMaba.isLulus && <QrCode />}
+          {dataMaba.isLulus && <QrCode size='w-32 h-32' />}
           <div>
             <h1 className='text-3xl font-bold uppercase'>
               {dataMaba.nama || 'John Doe'}

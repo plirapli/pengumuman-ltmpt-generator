@@ -60,7 +60,7 @@ function Snm({ dataMaba }) {
         </div>
 
         <div className='bg-white rounded-xl shadow p-4 mb-4 flex flex-col sm:flex-row sm:items-center'>
-          {dataMaba.isLulus && <QrCode />}
+          {dataMaba.isLulus && <QrCode size='w-32 h-32' />}
           <div>
             <p className='text-sm flex flex-col sm:flex-row'>
               <p className='mb-2 sm:mb-0'>
