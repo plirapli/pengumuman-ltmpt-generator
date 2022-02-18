@@ -26,7 +26,7 @@ function Snm({ dataMaba }) {
         <div className='w-full h-8 bg-blue-500'></div>
 
         {/* Body */}
-        <div className='w-full max-w-screen-lg'>
+        <div className='w-full max-w-screen-md lg:max-w-screen-lg'>
           <div className='my-8 text-xl font-bold text-center'>
             PENGUMUMAN HASIL SELEKSI SBMPTN LTMPT 2021
           </div>
@@ -35,9 +35,9 @@ function Snm({ dataMaba }) {
           <div className='border border-black rounded-md overflow-hidden'>
             {/* Profil Siswa */}
             <div className='p-6 grid grid-rows-2 sm:grid-cols-12 sm:grid-rows-none'>
-              <div className='border border-red-500 sm:col-span-4'>
-                {dataMaba.isLulus && <QrCode size='max-w-full h-auto' />}
-              </div>
+              {dataMaba.isLulus && (
+                <QrCode size='sm:col-span-4 w-11/12 sm:w-full' />
+              )}
               <div className='p-6 sm:ml-6 bg-gray-200 sm:col-span-8'>
                 <div className='flex flex-col'>
                   <div className='flex'>
@@ -61,9 +61,31 @@ function Snm({ dataMaba }) {
                       {dataMaba.tglLahir || '31-12-2012'}
                     </p>
                   </div>
+                  <div className='mt-6'>
+                    <p>
+                      Selamat! Anda dinyatakan lulus seleksi SBMPTN LTMPT 2021
+                      di:
+                    </p>
+                    <div className='flex'>
+                      <p className='w-32 border border-red-500'>PTN</p>
+                      <span className='mx-4 border border-red-500'>:</span>
+                      <p className='flex-grow border border-red-500 font-bold uppercase'>
+                        {dataMaba.univ || 'Institut Neo Kultur'}
+                      </p>
+                    </div>
+                    <div className='flex'>
+                      <p className='w-32 border border-red-500'>
+                        Program Studi
+                      </p>
+                      <span className='mx-4 border border-red-500'>:</span>
+                      <p className='flex-grow border border-red-500 font-bold uppercase'>
+                        {dataMaba.prodi || 'Informatika'}
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
-                {dataMaba.isLulus && (
+                {/* {dataMaba.isLulus && (
                   <div className='mt-2 flex flex-col sm:text-lg uppercase'>
                     <h3 className='font-bold'>
                       {dataMaba.univ || 'Institut Neo Kultur'}
@@ -76,15 +98,17 @@ function Snm({ dataMaba }) {
                       </span>
                     </h3>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
 
             {/* Tombol kembali */}
             <div className='bg-gray-200 p-4 mt-8'>
-              <button className='w-full p-2 rounded bg-green-500 text-white'>
-                Kembali ke pencarian
-              </button>
+              <Link to='/'>
+                <button className='w-full p-2 rounded bg-green-500 text-white'>
+                  Kembali ke pencarian
+                </button>
+              </Link>
             </div>
           </div>
         </div>
