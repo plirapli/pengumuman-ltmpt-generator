@@ -119,7 +119,7 @@ function Home({ setDataMaba }) {
       prodi,
     }));
 
-    snm ? history.push('/snm/theme1') : history.push('/sbm/theme0');
+    snm ? history.push('/snm/theme1') : history.push('/sbm/theme1');
   };
   // == SUBMIT HANDLER
 
