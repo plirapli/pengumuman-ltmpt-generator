@@ -41,8 +41,8 @@ function Snm({ dataMaba }) {
         <div className='mb-4'>
           <Link to='/'>
             <div className='flex items-center'>
-              <Logo logo={logoSnm} />
-              <Logo customClass='ml-2 sm:ml-4' logo={logoLtmpt} />
+              <Logo customClass='h-14 sm:h-20' logo={logoSnm} />
+              <Logo customClass='h-14 sm:h-20 ml-2 sm:ml-4' logo={logoLtmpt} />
             </div>
           </Link>
           <div className='mt-4 text-3xl'>Pengumuman SNMPTN 2022</div>
@@ -61,7 +61,7 @@ function Snm({ dataMaba }) {
 
         <div className='bg-white rounded-xl shadow p-4 mb-4 flex flex-col sm:flex-row sm:items-center'>
           {dataMaba.isLulus && <QrCode size='w-32 h-32' />}
-          <div>
+          <div className='sm:ml-4'>
             <p className='text-sm flex flex-col sm:flex-row'>
               <p className='mb-2 sm:mb-0'>
                 <span className='font-bold text-black text-opacity-30'>

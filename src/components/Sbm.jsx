@@ -16,7 +16,7 @@ function Snm({ dataMaba }) {
       <div className='mt-0 sm:mt-8'>
         <div className='mb-4'>
           <Link to='/'>
-            <Logo logo={logoLtmpt} />
+            <Logo customClass='w-1/2' logo={logoLtmpt} />
           </Link>
           <div className='mt-4 text-3xl'>Pengumuman SBMPTN 2022</div>
         </div>
