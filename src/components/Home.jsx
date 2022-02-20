@@ -119,12 +119,12 @@ function Home({ setDataMaba }) {
       prodi,
     }));
 
-    snm ? history.push('/snm/theme1') : history.push('/sbm/theme1');
+    snm ? history.push('/snm/theme1') : history.push('/sbm/theme0');
   };
   // == SUBMIT HANDLER
 
   return (
-    <div className='w-full max-w-screen-md'>
+    <div className='p-4 sm:p-8 w-full max-w-screen-md'>
       <Logo logo={logoLtmpt} />
       <div className='mb-4'>
         <h1 className='mt-4 text-3xl font-bold uppercase'>

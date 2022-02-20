@@ -10,7 +10,7 @@ function App() {
   const [dataMaba, setDataMaba] = useState({});
 
   return (
-    <div className='min-h-screen p-4 sm:p-8 bg-base-500 font-poppins'>
+    <div className='min-h-screen bg-base-500 font-poppins'>
       <Router>
         <div className='flex justify-center'>
           <Switch>
