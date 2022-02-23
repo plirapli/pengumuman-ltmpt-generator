@@ -6,6 +6,8 @@ import QrCode from './QrCode';
 import { Link } from 'react-router-dom';
 
 function Snm({ dataMaba }) {
+  const year = new Date().getFullYear();
+
   return (
     <div className='w-full flex flex-col items-center'>
       {/* Header */}
@@ -25,7 +27,7 @@ function Snm({ dataMaba }) {
       {/* Body */}
       <div className='w-full max-w-screen-md lg:max-w-screen-lg'>
         <div className='my-8 text-xl font-bold text-center'>
-          PENGUMUMAN HASIL SELEKSI SBMPTN LTMPT 2022
+          PENGUMUMAN HASIL SELEKSI SBMPTN LTMPT {year}
         </div>
 
         {/* Hasil */}

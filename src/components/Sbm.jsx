@@ -5,6 +5,8 @@ import QrCode from './QrCode';
 import { Link } from 'react-router-dom';
 
 function Snm({ dataMaba }) {
+  const year = new Date().getFullYear();
+
   const kalimatGagal =
     'semangat dan jangan putus asa! masih ada kesempatan mengikuti seleksi mandiri ptn.';
 
@@ -18,7 +20,7 @@ function Snm({ dataMaba }) {
           <Link to='/'>
             <Logo customClass='w-1/2' logo={logoLtmpt} />
           </Link>
-          <div className='mt-4 text-3xl'>Pengumuman SBMPTN 2022</div>
+          <div className='mt-4 text-3xl'>Pengumuman SBMPTN {year}</div>
         </div>
         <div
           className={`${

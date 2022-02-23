@@ -123,12 +123,15 @@ function Home({ setDataMaba }) {
   };
   // == SUBMIT HANDLER
 
+  // YEAR
+  const year = new Date().getFullYear();
+
   return (
     <div className='p-4 sm:p-8 w-full max-w-screen-md'>
       <Logo logo={logoLtmpt} />
       <div className='mb-4'>
         <h1 className='mt-4 text-3xl font-bold uppercase'>
-          {`hasil seleksi ${snm ? 'snmptn' : 'sbmptn'} 2022`}
+          {`hasil seleksi ${snm ? 'snmptn' : 'sbmptn'} ${year}`}
         </h1>
         <p className='text-black text-opacity-30'>
           Silakan isi formulir di bawah ini.

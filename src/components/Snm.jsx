@@ -29,6 +29,8 @@ function Snm({ dataMaba }) {
     },
   ];
 
+  const year = new Date().getFullYear();
+
   const kalimatGagal =
     'masih ada kesempatan mendaftar dan mengikuti utbk sbmptn 2021 atau seleksi mandiri ptn.';
 
@@ -45,7 +47,7 @@ function Snm({ dataMaba }) {
               <Logo customClass='h-14 sm:h-20 ml-2 sm:ml-4' logo={logoLtmpt} />
             </div>
           </Link>
-          <div className='mt-4 text-3xl'>Pengumuman SNMPTN 2022</div>
+          <div className='mt-4 text-3xl'>Pengumuman SNMPTN {year}</div>
         </div>
         <div
           className={`${
