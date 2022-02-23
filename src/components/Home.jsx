@@ -136,12 +136,13 @@ function Home({ setDataMaba }) {
       </div>
 
       <div
-        onClick={() => setClick(() => !click)}
         className={`${
           click ? 'flex' : 'hidden'
         } justify-between bg-blue-200 my-4 p-3 sm:p-4 rounded-md shadow text-sm text-black text-opacity-30 uppercase`}>
         Data yang telah anda isi tidak akan dikirimkan ke server mana pun.
-        <span className='cursor-pointer hover:text-black transition-all'>
+        <span
+          onClick={() => setClick(() => !click)}
+          className='cursor-pointer hover:text-black transition-all'>
           &#10005;
         </span>
       </div>
