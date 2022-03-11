@@ -6,6 +6,11 @@ import logoLtmpt from '../assets/images/logo-ltmpt.png';
 function Home({ setDataMaba }) {
   let history = useHistory();
 
+  const themeList = {
+    snm: ['Original', 'Theme 1'],
+    sbm: ['Original', 'Theme 1'],
+  };
+
   // Button
   const [click, setClick] = useState(true);
 
@@ -30,7 +35,13 @@ function Home({ setDataMaba }) {
   const [isLulus, setIsLulus] = useState(true);
   const [univ, setUniv] = useState('');
   const [prodi, setProdi] = useState('');
+  // End Data Camaba
 
+  // Tema
+  const [theme, setTheme] = useState('0');
+
+  // FETCH API
+  // WILAYAH
   useEffect(() => {
     fetch(`https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json`)
       .then((response) => response.json())
@@ -49,6 +60,7 @@ function Home({ setDataMaba }) {
       .then((response) => response.json())
       .then((regencies) => setKotaKab(() => regencies));
   }, [domisili.prov, provId, snm]);
+  // END FETCH API
 
   // nomor peserta separator
   const threeDigitsSeparator = (num) => {
@@ -119,7 +131,7 @@ function Home({ setDataMaba }) {
       prodi,
     }));
 
-    snm ? history.push('/snm/theme1') : history.push('/sbm/theme1');
+    snm ? history.push('/snm/1') : history.push(`sbm/${theme}`);
   };
   // == SUBMIT HANDLER
 
@@ -379,6 +391,31 @@ function Home({ setDataMaba }) {
                 placeholder='Program Studi'
                 required
               />
+            </div>
+          </>
+        )}
+        {!snm && (
+          <>
+            <div className='flex flex-col mb-8'>
+              <label className='mb-2 font-bold text-black text-opacity-30'>
+                Tema
+              </label>
+              <div className='flex text-sm sm:text-base'>
+                <div className='w-full flex items-center relative'>
+                  <select
+                    name='prov'
+                    title='Daftar Provinsi'
+                    className='w-full p-3 pr-8 sm:p-4 sm:pr-10 mr-4 rounded-md shadow focus:outline-none appearance-none overflow-ellipsis'
+                    onChange={(e) => inputDataHandler(e, setTheme)}>
+                    {themeList.sbm.map((theme, i) => (
+                      <option key={i} value={i}>
+                        {theme}
+                      </option>
+                    ))}
+                  </select>
+                  <div className='absolute right-7'>▼</div>
+                </div>
+              </div>
             </div>
           </>
         )}

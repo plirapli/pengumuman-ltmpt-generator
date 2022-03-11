@@ -17,13 +17,13 @@ function App() {
             <Route exact path='/'>
               <Home dataMaba={dataMaba} setDataMaba={setDataMaba} />
             </Route>
-            <Route path='/snm/theme1'>
+            <Route path='/snm/1'>
               <Snm dataMaba={dataMaba} />
             </Route>
-            <Route path='/sbm/theme1'>
+            <Route path='/sbm/1'>
               <Sbm dataMaba={dataMaba} />
             </Route>
-            <Route path='/sbm/theme0'>
+            <Route path='/sbm/0'>
               <SbmOri dataMaba={dataMaba} />
             </Route>
           </Switch>
