@@ -32,22 +32,27 @@ function Snm({ dataMaba }) {
 
         {/* Hasil */}
         <div className='border border-gray-300 rounded-md overflow-hidden'>
-          <div className='p-6 text-center'>
-            <p className='uppercase'>
-              mohon maaf, peserta atas nama
-              <span className='font-bold'> {dataMaba.nama || `John Doe`} </span>
-              dengan nomor peserta
-              <span className='font-bold'>
-                {' '}
-                {dataMaba.noReg || `123-123-12-0123`}{' '}
-              </span>
-              dinyatakan <span className='font-bold'>tidak diterima </span>
-              pada sbmptn ltmpt 2022
-            </p>
-            <p className='mt-4 text-xl font-bold'>
-              JANGAN PUTUS ASA DAN TETAP SEMANGAT!
-            </p>
-          </div>
+          {!dataMaba.isLulus && (
+            <div className='p-6 text-center'>
+              <p className='uppercase'>
+                mohon maaf, peserta atas nama
+                <span className='font-bold'>
+                  {' '}
+                  {dataMaba.nama || `John Doe`}{' '}
+                </span>
+                dengan nomor peserta
+                <span className='font-bold'>
+                  {' '}
+                  {dataMaba.noReg || `123-123-12-0123`}{' '}
+                </span>
+                dinyatakan <span className='font-bold'>tidak diterima </span>
+                pada sbmptn ltmpt 2022
+              </p>
+              <p className='mt-4 text-xl font-bold'>
+                JANGAN PUTUS ASA DAN TETAP SEMANGAT!
+              </p>
+            </div>
+          )}
 
           {/* Profil Siswa */}
           {dataMaba.isLulus && (
