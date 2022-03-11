@@ -58,17 +58,9 @@ function Snm({ dataMaba }) {
             </div>
 
             {dataMaba.isLulus && (
-              <div className='mt-2 flex flex-col sm:text-lg uppercase'>
-                <h3 className='font-bold'>
-                  {dataMaba.univ || 'Institut Neo Kultur'}
-                </h3>
-                <h3>
-                  {' '}
-                  Program Studi{' '}
-                  <span className='font-bold'>
-                    {dataMaba.prodi || 'informatika'}
-                  </span>
-                </h3>
+              <div className='mt-2 flex flex-col sm:text-lg uppercase font-bold'>
+                <h3>{dataMaba.univ || 'Institut Neo Kultur'}</h3>
+                <h3>{dataMaba.prodi || 'informatika'}</h3>
               </div>
             )}
           </div>
