@@ -15,6 +15,14 @@ module.exports = {
           400: '#303030',
           500: '#181818',
         },
+        snmOriginal: {
+          accentBlue: '#88ccf0',
+          lGradient: '#083661',
+          rGradient: '#006cbf',
+        },
+      },
+      backgroundImage: {
+        snmOriginal: "url('/src/assets/images/snmOriginal/background.jpg')",
       },
     },
   },

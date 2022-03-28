@@ -112,7 +112,7 @@ function Snm({ dataMaba }) {
                   <p className='text-xs font-bold text-black text-opacity-30 capitalize'>
                     {profile.title}
                   </p>
-                  <p className=''>{profile.val}</p>
+                  <p>{profile.val}</p>
                 </div>
               </div>
             ))}

@@ -131,7 +131,7 @@ function Home({ setDataMaba }) {
       prodi,
     }));
 
-    snm ? history.push('/snm/1') : history.push(`sbm/${theme}`);
+    snm ? history.push('/snm/0') : history.push(`sbm/${theme}`);
   };
   // == SUBMIT HANDLER
 
