@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       poppins: ['Poppins', 'sans-serif'],
+      lato: ['Lato', 'sans-serif'],
     },
     extend: {
       colors: {
@@ -17,8 +18,15 @@ module.exports = {
         },
         snmOriginal: {
           accentBlue: '#88ccf0',
-          lGradient: '#083661',
-          rGradient: '#006cbf',
+          link: '#008acf',
+          lulus: {
+            lGradient: '#083661',
+            rGradient: '#006cbf',
+          },
+          gagal: {
+            lGradient: '#B53424',
+            rGradient: '#BE371B',
+          },
         },
       },
       backgroundImage: {
