@@ -6,10 +6,7 @@ import logoLtmpt from '../assets/images/logo-ltmpt.png';
 function Home({ setDataMaba }) {
   let history = useHistory();
 
-  const themeList = {
-    snm: ['Original', 'Theme 1'],
-    sbm: ['Original', 'Theme 1'],
-  };
+  const themeList = ['Original', 'Theme 1'];
 
   // Button
   const [click, setClick] = useState(true);
@@ -131,7 +128,7 @@ function Home({ setDataMaba }) {
       prodi,
     }));
 
-    snm ? history.push('/snm/0') : history.push(`sbm/${theme}`);
+    snm ? history.push(`/snm/${theme}`) : history.push(`sbm/${theme}`);
   };
   // == SUBMIT HANDLER
 
@@ -394,31 +391,27 @@ function Home({ setDataMaba }) {
             </div>
           </>
         )}
-        {!snm && (
-          <>
-            <div className='flex flex-col mb-8'>
-              <label className='mb-2 font-bold text-black text-opacity-30'>
-                Tema
-              </label>
-              <div className='flex text-sm sm:text-base'>
-                <div className='w-full flex items-center relative'>
-                  <select
-                    name='prov'
-                    title='Daftar Provinsi'
-                    className='w-full p-3 pr-8 sm:p-4 sm:pr-10 mr-4 rounded-md shadow focus:outline-none appearance-none overflow-ellipsis'
-                    onChange={(e) => inputDataHandler(e, setTheme)}>
-                    {themeList.sbm.map((theme, i) => (
-                      <option key={i} value={i}>
-                        {theme}
-                      </option>
-                    ))}
-                  </select>
-                  <div className='absolute right-7'>▼</div>
-                </div>
-              </div>
+        <div className='flex flex-col mb-8'>
+          <label className='mb-2 font-bold text-black text-opacity-30'>
+            Tema
+          </label>
+          <div className='flex text-sm sm:text-base'>
+            <div className='w-full flex items-center relative'>
+              <select
+                name='prov'
+                title='Daftar Provinsi'
+                className='w-full p-3 pr-8 sm:p-4 sm:pr-10 mr-4 rounded-md shadow focus:outline-none appearance-none overflow-ellipsis'
+                onChange={(e) => inputDataHandler(e, setTheme)}>
+                {themeList.map((theme, i) => (
+                  <option key={i} value={i}>
+                    {theme}
+                  </option>
+                ))}
+              </select>
+              <div className='absolute right-7'>▼</div>
             </div>
-          </>
-        )}
+          </div>
+        </div>
         <button
           type='submit'
           className='
