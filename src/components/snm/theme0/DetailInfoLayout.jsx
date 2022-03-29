@@ -1,23 +1,15 @@
 import React from 'react';
 
-function DetailInfoLayout({ isLulus, customClass, key1, val1, key2, val2 }) {
+function DetailInfoLayout({ profile }) {
   return (
-    <div
-      className={`col-span-12 ${isLulus ? 'lg:col-span-3' : 'lg:col-span-6'} 
-        flex flex-col font-black capitalize ${customClass}`}>
-      <div>
+    <>
+      <div className={``}>
         <p className='text-snmOriginal-accentBlue text-sm lg:text-base'>
-          {key1}
+          {profile.title}
         </p>
-        <p className='text-lg lg:text-xl'>{val1}</p>
+        <p className='text-lg lg:text-xl uppercase'>{profile.val}</p>
       </div>
-      <div className='mt-6'>
-        <p className='text-snmOriginal-accentBlue text-sm lg:text-base'>
-          {key2}
-        </p>
-        <p className='capitalize text-lg lg:text-xl'>{val2}</p>
-      </div>
-    </div>
+    </>
   );
 }
 

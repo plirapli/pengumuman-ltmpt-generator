@@ -7,9 +7,9 @@ import { Link } from 'react-router-dom';
 function Snm({ dataMaba }) {
   const profiles = [
     { title: 'tanggal lahir', val: dataMaba.tglLahir || '31/12/2012' },
-    { title: 'kabupaten/kota', val: dataMaba.kotaKab || 'Konoha' },
     { title: 'asal sekolah', val: dataMaba.sekolah || 'SMA NEGERI 1 KWANGYA' },
-    { title: 'provinsi', val: dataMaba.prov || 'Earth C-137' },
+    { title: 'kabupaten/kota', val: dataMaba.kotaKab || 'KONOHA' },
+    { title: 'provinsi', val: dataMaba.prov || 'KWANGYA' },
   ];
 
   const year = new Date().getFullYear();
@@ -88,22 +88,20 @@ function Snm({ dataMaba }) {
 
             {/* DETAIL INFO */}
             <div className='mt-8 grid grid-cols-12'>
-              <DetailInfo
-                isLulus={dataMaba.isLulus}
-                key1={profiles[0].title}
-                val1={profiles[0].val}
-                key2={profiles[2].title}
-                val2={profiles[2].val}
-              />
-              {/* <span className=''></span> */}
-              <DetailInfo
-                isLulus={dataMaba.isLulus}
-                customClass='mt-6 lg:mt-0'
-                key1={profiles[1].title}
-                val1={profiles[1].val}
-                key2={profiles[3].title}
-                val2={profiles[3].val}
-              />
+              <div
+                className={`
+                  col-span-12 ${dataMaba.isLulus ? 'lg:col-span-6' : ''}
+                  grid grid-rows-4 lg:grid-rows-2 grid-flow-col
+                  gap-4
+                  font-black capitalize`}>
+                {profiles.map((profile, i) => (
+                  <DetailInfo
+                    key={i}
+                    isLulus={dataMaba.isLulus}
+                    profile={profile}
+                  />
+                ))}
+              </div>
               {dataMaba.isLulus && (
                 <div className='bg-white col-span-12 mt-6 p-4 text-black lg:col-span-6 lg:mt-0'>
                   <h3 className='text-lg font-semibold'>
