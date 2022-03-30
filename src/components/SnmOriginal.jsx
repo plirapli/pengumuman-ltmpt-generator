@@ -1,6 +1,6 @@
 import DetailInfo from './snm/theme0/DetailInfoLayout';
 import Logo from './Logo';
-import QrCode from './QrCode';
+import QrCode from './snm/theme0/QrCode';
 import logoSnm from '../assets/images/logo-snmptn-putih.png';
 import { Link } from 'react-router-dom';
 
