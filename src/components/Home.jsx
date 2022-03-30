@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { Icon } from '@iconify/react';
 import Logo from './Logo';
 import logoLtmpt from '../assets/images/logo-ltmpt.png';
 
@@ -76,6 +77,12 @@ function Home({ setDataMaba }) {
         )
         .join('')
     );
+  };
+
+  // Randomize Handler
+  const rngHandler = () => {
+    const num = Math.floor(Math.random() * 9999999999);
+    setNisn(() => num);
   };
 
   // == INPUT HANDLER
@@ -274,15 +281,26 @@ function Home({ setDataMaba }) {
               <label className='mb-2 font-bold text-black text-opacity-30'>
                 NISN
               </label>
-              <input
-                onChange={(e) => inputDataHandler(e, setNisn, true)}
-                value={nisn}
-                className='p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base'
-                type='text'
-                placeholder='NISN'
-                maxLength='10'
-                required
-              />
+              <div className='flex'>
+                <input
+                  onChange={(e) => inputDataHandler(e, setNisn, true)}
+                  value={nisn}
+                  className='p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base'
+                  type='text'
+                  placeholder='NISN'
+                  minlength='10'
+                  maxLength='10'
+                  required
+                />
+                <div
+                  onClick={() => rngHandler()}
+                  title='Randomize'
+                  className='
+                    flex justify-center items-center ml-4 w-14 rounded-md shadow bg-white
+                    cursor-pointer transition-all hover:bg-gray-200'>
+                  <Icon icon='fad:random-2dice' width='40' />
+                </div>
+              </div>
             </div>
             <div className='flex flex-col mb-8'>
               <label className='mb-2 font-bold text-black text-opacity-30'>
