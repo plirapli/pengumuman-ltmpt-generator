@@ -136,8 +136,19 @@ function Home({ setDataMaba }) {
   const year = new Date().getFullYear();
 
   return (
-    <div className='p-4 sm:p-8 w-full max-w-screen-md'>
-      <Logo logo={logoLtmpt} />
+    <div className='p-4 md:p-8 w-full max-w-screen-md'>
+      <div className='flex justify-between items-start'>
+        <Logo logo={logoLtmpt} />
+        <a
+          href='https://saweria.co/mrafli'
+          target='_blank'
+          rel='noreferrer'
+          className='
+            py-2 px-4 bg-pink-500 shadow rounded-md text-white
+            transition-all hover:bg-pink-200 hover:text-pink-500'>
+          Donate &nbsp;❤
+        </a>
+      </div>
       <div className='mb-4'>
         <h1 className='mt-4 text-3xl font-bold uppercase'>
           {`hasil seleksi ${snm ? 'snmptn' : 'sbmptn'} ${year}`}
@@ -163,7 +174,38 @@ function Home({ setDataMaba }) {
       <form onSubmit={submitDataHandler} action=''>
         <div className='flex flex-col mb-8'>
           <label className='mb-2 font-bold text-black text-opacity-30'>
-            Nomor Peserta
+            Jenis Seleksi
+          </label>
+          <div className='flex text-center'>
+            <div
+              onClick={() => handleSetParam(true, setSnm)}
+              className={`
+                w-full rounded-md shadow
+                p-3 sm:p-4 mr-4
+                font-bold text-black text-opacity-60 
+                ${snm ? 'bg-gray-300' : 'bg-white hover:bg-gray-200'} 
+                cursor-pointer
+                duration-200
+              `}>
+              SNMPTN
+            </div>
+            <div
+              onClick={() => handleSetParam(false, setSnm)}
+              className={`
+                p-3 sm:p-4
+                w-full rounded-md shadow
+                font-bold text-black text-opacity-60 
+                ${!snm ? 'bg-gray-300' : 'bg-white hover:bg-gray-200'} 
+                cursor-pointer
+                duration-200
+              `}>
+              SBMPTN
+            </div>
+          </div>
+        </div>
+        <div className='flex flex-col mb-8'>
+          <label className='mb-2 font-bold text-black text-opacity-30'>
+            No. Peserta
           </label>
           <input
             onChange={(e) => inputDataHandler(e, setNoReg, true)}
@@ -224,37 +266,6 @@ function Home({ setDataMaba }) {
               maxLength='4'
               required
             />
-          </div>
-        </div>
-        <div className='flex flex-col mb-8'>
-          <label className='mb-2 font-bold text-black text-opacity-30'>
-            Jenis Seleksi
-          </label>
-          <div className='flex text-center'>
-            <div
-              onClick={() => handleSetParam(true, setSnm)}
-              className={`
-                w-full rounded-md shadow
-                p-3 sm:p-4 mr-4
-                font-bold text-black text-opacity-60 
-                ${snm ? 'bg-gray-300' : 'bg-white hover:bg-gray-200'} 
-                cursor-pointer
-                duration-200
-              `}>
-              SNMPTN
-            </div>
-            <div
-              onClick={() => handleSetParam(false, setSnm)}
-              className={`
-                p-3 sm:p-4
-                w-full rounded-md shadow
-                font-bold text-black text-opacity-60 
-                ${!snm ? 'bg-gray-300' : 'bg-white hover:bg-gray-200'} 
-                cursor-pointer
-                duration-200
-              `}>
-              SBMPTN
-            </div>
           </div>
         </div>
         {snm && (
