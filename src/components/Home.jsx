@@ -288,7 +288,7 @@ function Home({ setDataMaba }) {
               <label className='mb-2 font-bold text-black text-opacity-30'>
                 NISN
               </label>
-              <div className='flex'>
+              <div className='flex flex-col sm:flex-row'>
                 <input
                   onChange={(e) => inputDataHandler(e, setNisn, true)}
                   value={nisn}
@@ -303,10 +303,15 @@ function Home({ setDataMaba }) {
                   onClick={() => rngHandler()}
                   title='Randomize'
                   className='
-                    flex justify-center items-center ml-4 w-12 sm:w-14 rounded-md shadow bg-white
+                    flex justify-center items-center 
+                    mt-4 p-2 sm:mt-0 sm:ml-4 sm:w-14
+                    rounded-md shadow bg-white
                     cursor-pointer transition-all hover:bg-gray-200'>
-                  <div className='w-9 sm:w-10'>
-                    <Icon icon='fad:random-2dice' width='full' />
+                  <div className='sm:w-10'>
+                    <span className='inline sm:hidden'>Randomize</span>
+                    <div className='hidden sm:inline'>
+                      <Icon icon='fad:random-2dice' width='full' />
+                    </div>
                   </div>
                 </div>
               </div>
