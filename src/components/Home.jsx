@@ -81,8 +81,11 @@ function Home({ setDataMaba }) {
 
   // Randomize Handler
   const rngHandler = () => {
-    const num = Math.floor(Math.random() * 9999999999);
-    setNisn(() => num);
+    let num = '';
+    while (num.length < 10) {
+      num += Math.floor(Math.random() * 10).toString();
+    }
+    setNisn(() => parseInt(num));
   };
 
   // == INPUT HANDLER
@@ -144,16 +147,20 @@ function Home({ setDataMaba }) {
 
   return (
     <div className='p-4 md:p-8 w-full max-w-screen-md'>
-      <div className='flex justify-between items-start'>
-        <Logo logo={logoLtmpt} />
+      <div className='grid grid-cols-12 gap-4'>
+        <div className='col-span-8'>
+          <Logo logo={logoLtmpt} customClass='w-full h-auto' />
+        </div>
         <a
           href='https://saweria.co/mrafli'
           target='_blank'
           rel='noreferrer'
           className='
-            py-2 px-4 bg-pink-500 shadow rounded-md text-white
+            col-span-2 col-end-13 self-start 
+            py-2 px-2 hidden sm:flex items-center justify-center
+            bg-pink-500 shadow rounded-md text-white text-sm
             transition-all hover:bg-pink-200 hover:text-pink-500'>
-          Donate &nbsp;❤
+          Donate
         </a>
       </div>
       <div className='mb-4'>
@@ -296,9 +303,11 @@ function Home({ setDataMaba }) {
                   onClick={() => rngHandler()}
                   title='Randomize'
                   className='
-                    flex justify-center items-center ml-4 w-14 rounded-md shadow bg-white
+                    flex justify-center items-center ml-4 w-12 sm:w-14 rounded-md shadow bg-white
                     cursor-pointer transition-all hover:bg-gray-200'>
-                  <Icon icon='fad:random-2dice' width='40' />
+                  <div className='w-9 sm:w-10'>
+                    <Icon icon='fad:random-2dice' width='full' />
+                  </div>
                 </div>
               </div>
             </div>
