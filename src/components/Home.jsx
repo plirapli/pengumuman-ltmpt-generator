@@ -176,6 +176,8 @@ function Home({ setDataMaba }) {
         className={`${
           click ? 'flex' : 'hidden'
         } justify-between bg-blue-200 my-4 p-3 sm:p-4 rounded-md shadow text-sm text-black text-opacity-30 uppercase`}>
+        Website ini bekerja secara client-side.
+        <br />
         Data yang telah anda isi tidak akan dikirimkan ke server mana pun.
         <span
           onClick={() => setClick(() => !click)}
