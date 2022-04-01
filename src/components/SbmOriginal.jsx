@@ -2,36 +2,42 @@ import ProfileLayout from './sbm/theme0/ProfileLayout';
 import Logo from './Logo';
 import logoLtmpt from '../assets/images/logo-ltmpt.png';
 import logoSponsor from '../assets/images/sponsor.png';
-import QrCode from './QrCode';
+import QrCode from '../components/snm/theme0/QrCode';
 import { Link } from 'react-router-dom';
 
 function Snm({ dataMaba }) {
   const year = new Date().getFullYear();
 
   return (
-    <div className='w-full flex flex-col items-center'>
+    <div className='w-full min-h-screen flex flex-col items-center bg-white font-sbmFonts'>
       {/* Header */}
       <div className='p-4 grid grid-cols-12 place-content-center'>
-        <div className='flex justify-center col-span-12 sm:col-span-5'>
+        <div className='flex justify-center sm:justify-start col-span-12 sm:col-span-5'>
           <Link to='/'>
             <Logo customClass='w-full h-auto' logo={logoLtmpt} />
           </Link>
         </div>
-        <div className='col-span-12 mt-4 sm:col-span-7 sm:mt-0 sm:ml-6'>
+        <div className='col-span-12 mt-4 sm:col-span-5 sm:col-end-13 sm:mt-0 sm:ml-6'>
           <Logo customClass='w-full h-auto' logo={logoSponsor} />
         </div>
       </div>
 
-      <div className='w-full h-8 bg-blue-700'></div>
+      <div className='w-full h-8 bg-sbmOriginal-blueLine'></div>
 
       {/* Body */}
-      <div className='w-full max-w-screen-md lg:max-w-screen-lg'>
-        <div className='my-8 text-xl font-bold text-center'>
+      <div
+        className='
+          w-full sbmXl:max-w-sbmXl sbmLg:max-w-sbmLg md:max-w-sbmMd sm:max-w-sbmSm
+          px-4'>
+        <div
+          className='
+          my-8 font-bold text-center 
+          text-base xl:text-2xl lg:text-xl md:text-lg'>
           PENGUMUMAN HASIL SELEKSI SBMPTN LTMPT {year}
         </div>
 
         {/* Hasil */}
-        <div className='border border-gray-300 rounded-md overflow-hidden'>
+        <div className='border border-black border-opacity-10 rounded-md overflow-hidden'>
           {!dataMaba.isLulus && (
             <div className='p-6 text-center'>
               <p className='uppercase'>
@@ -60,7 +66,7 @@ function Snm({ dataMaba }) {
               {dataMaba.isLulus && (
                 <QrCode size='sm:col-span-4 w-11/12 sm:w-full' />
               )}
-              <div className='bg-gray-200 p-6 mt-2 sm:mt-0 sm:ml-6 sm:col-span-8'>
+              <div className='bg-sbmOriginal-gray p-4 mt-2 sm:mt-0 sm:ml-6 sm:col-span-8'>
                 <div className='flex flex-col'>
                   {/* Profile */}
                   <div>
@@ -95,13 +101,32 @@ function Snm({ dataMaba }) {
                   </div>
                   <p className='mt-6'>
                     Persyaratan pendaftaran ulang calon mahasiswa baru dapat
-                    dilihat di sini.
+                    dilihat di{' '}
+                    <a
+                      target='_blank'
+                      rel='noreferrer'
+                      href='https://github.com/plirapli/pengumuman-ltmpt-generator'
+                      className='text-sbmOriginal-blueLink hover:text-sbmOriginal-blueLinkHover hover:underline'>
+                      sini
+                    </a>
+                    .
                   </p>
                   <p className='mt-6'>
                     Anda dapat mencetak kembali Kartu Tanda Peserta UTBK-SBMPTN
-                    2021 di sini.
+                    2021 di{' '}
+                    <a
+                      target='_blank'
+                      rel='noreferrer'
+                      href='https://portal.ltmpt.ac.id/'
+                      className='text-sbmOriginal-blueLink hover:text-sbmOriginal-blueLinkHover hover:underline'>
+                      sini
+                    </a>
+                    .
                   </p>
-                  <button className='mt-6 p-2 rounded bg-teal-400 bg-blue-500 text-white animate-pulse'>
+                  <button
+                    className='mt-6 p-2 
+                    bg-sbmOriginal-teal border-sbmOriginal-tealBorder text-white 
+                    rounded animate-sbmPulse transition-all hover:bg-sbmOriginal-tealHover'>
                     UNDUH PENGUMUMAN KETUA LTMPT (PDF)
                   </button>
                 </div>
@@ -110,9 +135,11 @@ function Snm({ dataMaba }) {
           )}
 
           {/* Tombol kembali */}
-          <div className='bg-gray-200 p-4'>
+          <div className='p-4 bg-black bg-opacity-3 border-t border-black border-opacity-10'>
             <Link to='/'>
-              <button className='w-full p-2 rounded bg-green-500 text-white'>
+              <button
+                className='w-full p-2 rounded text-white transition-all
+                         bg-sbmOriginal-green hover:bg-sbmOriginal-greenHover'>
                 Kembali ke pencarian
               </button>
             </Link>
