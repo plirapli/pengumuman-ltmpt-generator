@@ -1,4 +1,5 @@
 import ProfileLayout from './sbm/theme0/ProfileLayout';
+import Gagal from './sbm/theme0/KalimatGagal';
 import Logo from './Logo';
 import logoLtmpt from '../assets/images/logo-ltmpt.png';
 import logoSponsor from '../assets/images/sponsor.png';
@@ -6,6 +7,29 @@ import QrCode from '../components/snm/theme0/QrCode';
 import { Link } from 'react-router-dom';
 
 function Snm({ dataMaba }) {
+  const profile = [
+    {
+      title: 'nomor peserta',
+      val: dataMaba.noReg || '123-123-12-0123',
+    },
+    {
+      title: 'nama',
+      val: dataMaba.nama || 'John Doe',
+    },
+    {
+      title: 'tanggal lahir',
+      val: dataMaba.tglLahir || '04/05/2003',
+    },
+    {
+      title: 'PTN',
+      val: dataMaba.univ || 'Institut Teknologi Neo Kultur',
+    },
+    {
+      title: 'program studi',
+      val: dataMaba.prodi || 'Informatika',
+    },
+  ];
+
   const year = new Date().getFullYear();
 
   const kalLulus = `Selamat! Anda dinyatakan lulus seleksi SBMPTN LTMPT ${year} di:`;
@@ -43,25 +67,7 @@ function Snm({ dataMaba }) {
         {/* Hasil */}
         <div className='border border-black border-opacity-10 rounded-md overflow-hidden'>
           {!dataMaba.isLulus && (
-            <div className='p-6 text-center'>
-              <p className='uppercase'>
-                mohon maaf, peserta atas nama
-                <span className='font-bold'>
-                  {' '}
-                  {dataMaba.nama || `John Doe`}{' '}
-                </span>
-                dengan nomor peserta
-                <span className='font-bold'>
-                  {' '}
-                  {dataMaba.noReg || `123-123-12-0123`}{' '}
-                </span>
-                dinyatakan <span className='font-bold'>tidak diterima </span>
-                pada sbmptn ltmpt 2022
-              </p>
-              <p className='mt-4 text-xl font-bold'>
-                JANGAN PUTUS ASA DAN TETAP SEMANGAT!
-              </p>
-            </div>
+            <Gagal nama={profile[1].val} noReg={profile[0].val} year={year} />
           )}
 
           {/* Profil Siswa */}
@@ -74,31 +80,29 @@ function Snm({ dataMaba }) {
                 <div className='flex flex-col'>
                   {/* Profile */}
                   <div>
-                    <ProfileLayout
-                      field={'Nomer Peserta'}
-                      profile={dataMaba.noReg || '123-123-12-0123'}
-                    />
-                    <ProfileLayout
-                      field={'Nama'}
-                      profile={dataMaba.nama || 'John Doe'}
-                    />
-                    <ProfileLayout
-                      field={'Tanggal Lahir'}
-                      profile={dataMaba.tglLahir || '05-04-2003'}
-                    />
+                    {profile.map(
+                      (prof, i) =>
+                        i < 3 && (
+                          <ProfileLayout
+                            field={prof.title}
+                            profile={prof.val}
+                          />
+                        )
+                    )}
                   </div>
 
                   {/* PTN */}
                   <div className='mt-6'>
                     <p>{kalLulus}</p>
-                    <ProfileLayout
-                      field={'PTN'}
-                      profile={dataMaba.univ || 'Institut Neo Kultur'}
-                    />
-                    <ProfileLayout
-                      field={'Program Studi'}
-                      profile={dataMaba.prodi || 'Informatika'}
-                    />
+                    {profile.map(
+                      (prof, i) =>
+                        i > 2 && (
+                          <ProfileLayout
+                            field={prof.title}
+                            profile={prof.val}
+                          />
+                        )
+                    )}
                   </div>
                   <p className='mt-6'>
                     {kalDaful}
