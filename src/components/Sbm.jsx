@@ -29,7 +29,7 @@ function Snm({ dataMaba }) {
           <h1 className='font-bold text-xl'>
             {`anda dinyatakan ${
               dataMaba.isLulus ? 'Lulus' : 'Tidak lulus'
-            } seleksi sbmptn 2022`}
+            } seleksi sbmptn ${year}`}
           </h1>
           {!dataMaba.isLulus && <p className='mt-2'>{kalimatGagal}</p>}
         </div>
@@ -46,7 +46,7 @@ function Snm({ dataMaba }) {
                 <p className='text-sm font-bold text-black text-opacity-30'>
                   TANGGAL LAHIR :
                 </p>
-                <p className=''>{dataMaba.tglLahir || '31/12/2012'}</p>
+                <p className=''>{dataMaba.tglLahir || '05/04/2003'}</p>
               </div>
 
               <div className='flex-col'>

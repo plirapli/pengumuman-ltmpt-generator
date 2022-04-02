@@ -31,8 +31,7 @@ function Snm({ dataMaba }) {
 
   const year = new Date().getFullYear();
 
-  const kalimatGagal =
-    'masih ada kesempatan mendaftar dan mengikuti utbk sbmptn 2021 atau seleksi mandiri ptn.';
+  const kalimatGagal = `masih ada kesempatan mendaftar dan mengikuti utbk sbmptn ${year} atau seleksi mandiri ptn.`;
 
   const kalimatDaful =
     'Informasi pendaftaran ulang di PTN/Politeknik Negeri dapat dilihat pada link berikut.';
@@ -56,7 +55,7 @@ function Snm({ dataMaba }) {
           <h1 className='font-bold text-xl'>
             {`anda dinyatakan ${
               dataMaba.isLulus ? 'Lulus' : 'Tidak lulus'
-            } seleksi snmptn 2022`}
+            } seleksi snmptn ${year}`}
           </h1>
           {!dataMaba.isLulus && <p className='mt-2'>{kalimatGagal}</p>}
         </div>

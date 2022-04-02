@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function Snm({ dataMaba }) {
   const profiles = [
-    { title: 'tanggal lahir', val: dataMaba.tglLahir || '31/12/2012' },
+    { title: 'tanggal lahir', val: dataMaba.tglLahir || '05/04/2003' },
     { title: 'asal sekolah', val: dataMaba.sekolah || 'SMA NEGERI 1 KWANGYA' },
     { title: 'kabupaten/kota', val: dataMaba.kotaKab || 'KONOHA' },
     { title: 'provinsi', val: dataMaba.prov || 'KWANGYA' },
@@ -49,7 +49,7 @@ function Snm({ dataMaba }) {
                 {`${dataMaba.isLulus ? 'Selamat! ' : ''}
               anda dinyatakan 
               ${dataMaba.isLulus ? 'Lulus' : 'Tidak lulus'} 
-              seleksi snmptn 2022`}
+              seleksi snmptn ${year}`}
               </h1>
               {!dataMaba.isLulus && (
                 <p className='mt-2 uppercase'>{kalimatGagal}</p>

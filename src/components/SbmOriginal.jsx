@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 function Snm({ dataMaba }) {
   const year = new Date().getFullYear();
 
+  const kalLulus = `Selamat! Anda dinyatakan lulus seleksi SBMPTN LTMPT ${year} di:`;
+  const kalDaful = `Persyaratan pendaftaran ulang calon mahasiswa baru dapat dilihat di `;
+  const kalUnduhKartu = `Anda dapat mencetak kembali Kartu Tanda Peserta UTBK-SBMPTN ${year} di `;
+
   return (
     <div className='w-full min-h-screen flex flex-col items-center bg-white font-sbmFonts'>
       {/* Header */}
@@ -86,10 +90,7 @@ function Snm({ dataMaba }) {
 
                   {/* PTN */}
                   <div className='mt-6'>
-                    <p>
-                      Selamat! Anda dinyatakan lulus seleksi SBMPTN LTMPT 2021
-                      di:
-                    </p>
+                    <p>{kalLulus}</p>
                     <ProfileLayout
                       field={'PTN'}
                       profile={dataMaba.univ || 'Institut Neo Kultur'}
@@ -100,8 +101,7 @@ function Snm({ dataMaba }) {
                     />
                   </div>
                   <p className='mt-6'>
-                    Persyaratan pendaftaran ulang calon mahasiswa baru dapat
-                    dilihat di{' '}
+                    {kalDaful}
                     <a
                       target='_blank'
                       rel='noreferrer'
@@ -112,8 +112,7 @@ function Snm({ dataMaba }) {
                     .
                   </p>
                   <p className='mt-6'>
-                    Anda dapat mencetak kembali Kartu Tanda Peserta UTBK-SBMPTN
-                    2021 di{' '}
+                    {kalUnduhKartu}
                     <a
                       target='_blank'
                       rel='noreferrer'
