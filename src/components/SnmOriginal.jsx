@@ -111,7 +111,7 @@ function Snm({ dataMaba }) {
                   <a
                     target='_blank'
                     rel='noreferrer'
-                    class='text-base lg:text-lg font-black text-snmOriginal-link'
+                    className='text-base lg:text-lg font-black text-snmOriginal-link'
                     href='https://github.com/plirapli/pengumuman-ltmpt-generator'>
                     {dataMaba.domainUniv}
                   </a>
