@@ -7,7 +7,7 @@ function DetailInfoLayout({ profile }) {
         <p className='text-snmOriginal-accentBlue text-sm lg:text-base'>
           {profile.title}
         </p>
-        <p className='text-lg lg:text-xl uppercase'>{profile.val}</p>
+        <p className='text-lg lg:text-xl capitalize'>{profile.val}</p>
       </div>
     </>
   );

@@ -88,6 +88,13 @@ function Home({ setDataMaba }) {
     setNisn(() => parseInt(num));
   };
 
+  const kabNameHandler = (regency) => {
+    let type = regency.split(' ');
+    type[0] = type[0].toUpperCase() === 'KABUPATEN' && 'KAB.';
+
+    return type.join(' ');
+  };
+
   // Domain Name Generator
   const domainUnivGen = (name) => {
     let domain = name
@@ -139,6 +146,7 @@ function Home({ setDataMaba }) {
     const tglLahir = `${lahir.d}/${lahir.m}/${lahir.y}`;
     const noPeserta = !snm ? threeDigitsSeparator(noReg) : noReg;
     const valSekolah = sekolah.toUpperCase();
+    const kotaKab = kabNameHandler(domisili.kotaKab);
     const domainUniv = domainUnivGen(univ);
 
     setDataMaba((prev) => ({
@@ -149,7 +157,7 @@ function Home({ setDataMaba }) {
       snm,
       nisn,
       sekolah: valSekolah,
-      kotaKab: domisili.kotaKab,
+      kotaKab: kotaKab,
       prov: domisili.prov,
       isLulus,
       univ,

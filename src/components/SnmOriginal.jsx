@@ -8,8 +8,14 @@ function Snm({ dataMaba }) {
   const profiles = [
     { title: 'tanggal lahir', val: dataMaba.tglLahir || '05/04/2003' },
     { title: 'asal sekolah', val: dataMaba.sekolah || 'SMA NEGERI 1 KWANGYA' },
-    { title: 'kabupaten/kota', val: dataMaba.kotaKab || 'KONOHA' },
-    { title: 'provinsi', val: dataMaba.prov || 'KWANGYA' },
+    {
+      title: 'kabupaten/kota',
+      val: dataMaba.kotaKab.toLowerCase() || 'Konoha',
+    },
+    {
+      title: 'provinsi',
+      val: `Prov. ${dataMaba.prov.toLowerCase()}` || 'Kwangya',
+    },
   ];
 
   const year = new Date().getFullYear();

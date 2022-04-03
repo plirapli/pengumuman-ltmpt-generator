@@ -108,7 +108,7 @@ function Snm({ dataMaba }) {
                   <Icon icon={profile.icon} width='18' height='18' />
                 </div>
                 <div>
-                  <p className='text-xs font-bold text-black text-opacity-30 capitalize'>
+                  <p className='text-xs font-bold text-black text-opacity-30 uppercase'>
                     {profile.title}
                   </p>
                   <p>{profile.val}</p>
