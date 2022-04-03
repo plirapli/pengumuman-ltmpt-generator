@@ -78,7 +78,7 @@ function Snm({ dataMaba }) {
               rel='noreferrer'
               class='underline text-blue-500'
               href='https://github.com/plirapli/pengumuman-ltmpt-generator'>
-              https://pmb.universitaswakanda.ac.id
+              {dataMaba.domainUniv}
             </a>
           </div>
         </div>

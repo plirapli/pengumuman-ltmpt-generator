@@ -79,13 +79,30 @@ function Home({ setDataMaba }) {
     );
   };
 
-  // Randomize Handler
+  // Randomize NISN Handler
   const rngHandler = () => {
     let num = '';
     while (num.length < 10) {
       num += Math.floor(Math.random() * 10).toString();
     }
     setNisn(() => parseInt(num));
+  };
+
+  // Domain Name Generator
+  const domainUnivGen = (name) => {
+    let domain = name
+      .split(' ')
+      .map((char) =>
+        char
+          .split('')
+          .filter((char) => /[a-zA-Z]/.test(char))
+          .join('')
+          .substring(0, name.length < 20 ? name.length : 1)
+          .toLowerCase()
+      )
+      .join('');
+
+    return 'https://pmb.' + domain + '.ac.id/';
   };
 
   // == INPUT HANDLER
@@ -122,6 +139,7 @@ function Home({ setDataMaba }) {
     const tglLahir = `${lahir.d}/${lahir.m}/${lahir.y}`;
     const noPeserta = !snm ? threeDigitsSeparator(noReg) : noReg;
     const valSekolah = sekolah.toUpperCase();
+    const domainUniv = domainUnivGen(univ);
 
     setDataMaba((prev) => ({
       ...prev,
@@ -136,6 +154,7 @@ function Home({ setDataMaba }) {
       isLulus,
       univ,
       prodi,
+      domainUniv,
     }));
 
     snm ? history.push(`/snm/${theme}`) : history.push(`sbm/${theme}`);
@@ -297,7 +316,7 @@ function Home({ setDataMaba }) {
                   className='p-3 sm:p-4 rounded-md shadow focus:outline-none text-sm sm:text-base'
                   type='text'
                   placeholder='NISN'
-                  minlength='10'
+                  minLength='10'
                   maxLength='10'
                   required
                 />
@@ -312,7 +331,7 @@ function Home({ setDataMaba }) {
                   <div className='sm:w-10'>
                     <span className='inline sm:hidden'>Randomize</span>
                     <div className='hidden sm:inline'>
-                      <Icon icon='fad:random-2dice' width='full' />
+                      <Icon icon='fad:random-2dice' width='100%' />
                     </div>
                   </div>
                 </div>
